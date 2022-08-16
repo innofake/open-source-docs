@@ -38,9 +38,9 @@ function displayFor(repo, versions, displayVersion) {
 
         var searchPath = url.searchParams.get(`path`);
         if (searchPath) {
-            iframe.setAttribute("src", `${src}${searchPath}`);
+            iframe.setAttribute("src", `${window.location.pathname.slice(0,-1)}${src}${searchPath}`);
         } else {
-            iframe.setAttribute("src", src);
+            iframe.setAttribute("src", `${window.location.pathname.slice(0,-1)}${src}`);
         }
         let intervalId = undefined;
         intervalId = setInterval(() => {
