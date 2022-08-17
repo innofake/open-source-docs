@@ -1,0 +1,24 @@
+{
+  "repos": [
+    {
+      "name": "another-repo"
+    },
+    {
+      "name": "extra-repo",
+      "versions": [
+        "non-standard-02-versioning",
+        "strange-versioning-01"
+      ]
+    },
+    {
+      "name": "omni-components",
+      "versions": [
+        "0.0.1",
+        "beta"
+      ]
+    },
+    {
+      "name": "other-repo"
+    }
+  ]
+}
