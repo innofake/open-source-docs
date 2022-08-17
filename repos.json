@@ -6,6 +6,7 @@
     {
       "name": "extra-repo",
       "versions": [
+        "Custom Version Name 06",
         "non-standard-02-versioning",
         "strange-versioning-01"
       ]
