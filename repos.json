@@ -1,6 +1,13 @@
 {
   "repos": [
     {
+      "name": "Omni Components",
+      "versions": [
+        "0.0.1",
+        "beta"
+      ]
+    },
+    {
       "name": "another-repo"
     },
     {
@@ -9,13 +16,6 @@
         "Custom Version Name 06",
         "non-standard-02-versioning",
         "strange-versioning-01"
-      ]
-    },
-    {
-      "name": "omni-components",
-      "versions": [
-        "0.0.1",
-        "beta"
       ]
     },
     {
