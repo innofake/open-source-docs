@@ -4,7 +4,8 @@
   "description": "Open Source Documentation",
   "main": "index.js",
   "scripts": {
-    "serve": "http-server ."
+    "serve": "http-server .",
+    "repos": "node update-repos-list.js"
   },
   "keywords": [],
   "author": "",

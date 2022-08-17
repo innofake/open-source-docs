@@ -1,30 +1,110 @@
-import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
 
-(() => {
-        
-var main = document.getElementById("main");
+function goHome() {
+    var url = new URL(window.location.href);
+    headerLabel.textContent = `Innofake: Open Source Docs`;
+    window.document.title = `Innofake: Open Source Docs`;
+    var newUrl = url.href.replace(url.search, ``);
+    history.pushState({ url: newUrl }, ``, newUrl);
+    load(false, newUrl);
+};
 
-function clearElements() {
-    // Clear elements
-    var child = main.lastElementChild; 
-    while (child) {
-        main.removeChild(child);
-        child = main.lastElementChild;
+function goFullscreen() {
+    if (!iframe || !iframe.parentElement || !iframe.contentWindow || !iframe.contentWindow.location) {
+        console.warn(`Attempted to go fullscreen with no iframe`);
+    } else {
+        window.location.href = iframe.contentWindow.location.href;
     }
 }
 
-function displayFor(repo, versions, displayVersion) {
+window.addEventListener(`popstate`, evt => {
+    if (intervalId) {
+        try {
+            clearInterval(intervalId);
+        } catch (error) {
+
+        }
+        intervalId = undefined;
+    }
+    if (evt.state && evt.state.url) {
+        load(false, evt.state.url);
+    } else {
+        // window.location.reload();
+        load(false, window.location.href);
+    }
+});
+// history.replaceState({ url: window.location.href }, ``, window.location.href);
+
+let intervalId = undefined;
+let iframe = undefined;
+let selectChange = undefined;
+var home = document.getElementById("btn-home");
+var header = document.getElementById("header");
+var headerLabel = document.getElementById("header-label");
+var select = document.getElementById("version-select");
+var fullscreen = document.getElementById("btn-fullscreen");
+
+home.addEventListener(`click`, goHome);
+fullscreen.addEventListener(`click`, goFullscreen);
+
+async function load(pushState = true, loadUrl = undefined) {
+
+    loadUrl = new URL(loadUrl || window.location.href);
+
+    const baseRef = window.location.pathname.slice(0, -1);
+
+    const requestInit = {
+        mode: `cors`,
+        method: `GET`,
+        credentials: `same-origin`,
+        headers: {
+            'Pragma': `no-cache`,
+            'Cache-Control': `no-store`
+        }
+    };
+    let response = await fetch(`${baseRef}/repos.json`, requestInit);
+    let structure = await response.text();
+    if (structure) {
+        structure = JSON.parse(structure);
+    } else {
+        structure = {
+            repos: []
+        };
+    }
+
+    var main = document.getElementById("main");
+
+    function clearElements(el) {
+        if (!el) {
+            el = main;
+        }
+        // Clear elements
+        var child = el.lastElementChild;
+        while (child) {
+            el.removeChild(child);
+            child = el.lastElementChild;
+        }
+    }
+    clearElements();
+
+    function displayFor(repo, versions, displayVersion, pushState) {
+        if (select && selectChange) {
+            select.removeEventListener(`change`, selectChange);
+            selectChange = undefined;
+        }
         var url = new URL(window.location.href);
         url.searchParams.set(`repo`, repo);
+
+        headerLabel.textContent = `Innofake: ${repo}`
+        window.document.title = `Innofake: ${repo}`
 
         var tree = document.createDocumentFragment();
 
         var div = document.createElement("div");
         div.setAttribute("id", `container-${repo}`);
 
-        var iframe = document.createElement("iframe");
+        iframe = document.createElement("iframe");
         iframe.setAttribute("id", `frame-${repo}`);
-        iframe.setAttribute("style", `position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:-1;`);
+        iframe.setAttribute("class", `content-frame`);
         const repoSrc = `/docs/${repo}`;
         let src = repoSrc;
         if (displayVersion && displayVersion !== `latest`) {
@@ -34,15 +114,16 @@ function displayFor(repo, versions, displayVersion) {
             url.searchParams.delete(`version`);
         }
 
-        history.pushState(null, ``, url);
+        if (pushState) {
+            history.pushState({ url: url.href }, ``, url.href);
+        }
 
         var searchPath = url.searchParams.get(`path`);
         if (searchPath) {
-            iframe.setAttribute("src", `${window.location.pathname.slice(0,-1)}${src}${searchPath}`);
+            iframe.setAttribute("src", `${baseRef}${src}${searchPath}`);
         } else {
-            iframe.setAttribute("src", `${window.location.pathname.slice(0,-1)}${src}`);
+            iframe.setAttribute("src", `${baseRef}${src}`);
         }
-        let intervalId = undefined;
         intervalId = setInterval(() => {
             try {
                 if (!iframe || !iframe.parentElement || !iframe.contentWindow || !iframe.contentWindow.location) {
@@ -51,9 +132,14 @@ function displayFor(repo, versions, displayVersion) {
                     const search = iframe.contentWindow.location.search;
                     if (search) {
                         url = new URL(window.location.href);
+                        const hadPath = url.searchParams.has(`path`);
                         url.searchParams.set(`path`, search);
-                        if (url.href != window.location.href) {
-                            history.pushState(null, ``, url);
+                        if (url.href != window.location.href && url.searchParams.has(`repo`)) {
+                            if (hadPath) {
+                                history.pushState({ url: url.href }, ``, url.href);
+                            } else {
+                                history.replaceState({ url: url.href }, ``, url.href);
+                            }
                         }
                     }
                 }
@@ -64,129 +150,110 @@ function displayFor(repo, versions, displayVersion) {
         }, 50);
 
         if (versions && versions.length > 0) {
-            var select = document.createElement( 'select' );
+            select.setAttribute(`class`, `version-select`);
+            clearElements(select);
             var option;
 
-            option = document.createElement( 'option' );
+            option = document.createElement('option');
 
             option.value = option.textContent = `latest`;
 
-            select.appendChild( option );
+            select.appendChild(option);
 
-            versions.forEach(( item ) => {
+            versions.forEach((item) => {
 
-                option = document.createElement( 'option' );
+                option = document.createElement('option');
 
                 option.value = option.textContent = item;
 
-                select.appendChild( option );
+                select.appendChild(option);
             });
-            select.style.position = "absolute";
-            select.style.top = `27px`;
-            select.style.left = `120px`;
-            select.addEventListener(`change`, (evt) => {
+            selectChange = (evt) => {
                 const newDisplayVersion = evt.target.value;
                 if (newDisplayVersion !== displayVersion && (displayVersion || newDisplayVersion !== `latest`)) {
                     clearElements();
-                    displayFor(repo,versions, newDisplayVersion);
+                    displayFor(repo, versions, newDisplayVersion, true);
                 }
-            });
+            }
+            select.addEventListener(`change`, selectChange);
 
             if (displayVersion && displayVersion !== `latest`) {
                 select.options[versions.indexOf(displayVersion) + 1].selected = true;
             }
 
-            div.appendChild(select);
+            // header.appendChild(select);
+        } else {
+            select.setAttribute(`class`, `hidden`);
         }
+        fullscreen.classList.remove(`hidden`);
 
         div.appendChild(iframe);
 
         tree.appendChild(div);
 
         main.appendChild(tree);
-}
+    }
 
-// Octokit.js
-// https://github.com/octokit/core.js#readme
-const octokit = new Octokit({
-    // auth: 'personal-access-token123'
-});
 
-if (window.origin && window.location && history) {
-    if (window.location.search) {
-        var url = new URL(window.location.href);
+    if (loadUrl.search) {
+        var url = loadUrl;
         var repo = url.searchParams.get(`repo`);
         if (repo) {
             let versions = [];
             var version = url.searchParams.get(`version`);
-            octokit.request('GET /repos/{owner}/{repo}/contents/{path}', {
-                owner: 'innofake',
-                repo: 'open-source-docs',
-                path: `docs/${repo}/versions`
-            }).then(atPath => {
-                console.log(atPath);
-                versions = atPath.data.map(v => v.name);
+            let definition = structure.repos.find(r => r.name === repo);
+            if (definition) {
+                versions = definition.versions || [];
+            }
+            clearElements();
 
-                clearElements();
-    
-                displayFor(repo, versions, version);
-            }).catch(err => {
-                console.warn(err);
-
-                clearElements();
-    
-                displayFor(repo, versions, version);
-            });
+            displayFor(repo, versions, version, pushState);
             return;
         }
     }
-}
+    headerLabel.textContent = `Innofake: Open Source Docs`;
+    window.document.title = `Innofake: Open Source Docs`;
+    select.setAttribute(`class`, `hidden`);
+    fullscreen.classList.add(`hidden`);
+    
+    var barTree = document.createDocumentFragment();
+    var barDiv = document.createElement("div");
+    barDiv.setAttribute("id", `container-buttons`);
+    barDiv.setAttribute("class", "btn-bar");
 
-octokit.request('GET /repos/{owner}/{repo}/contents/{path}', {
-                owner: 'innofake',
-                repo: 'open-source-docs',
-                path: 'docs'
-}).then(result => {
-    console.log(result);
-
-    result.data.forEach(item => {      
-        const path = item.name; 
+    structure.repos.forEach(item => {
+        const path = item.name;
 
         var tree = document.createDocumentFragment();
 
         var div = document.createElement("div");
         div.setAttribute("id", `container-${path}`);
+        div.setAttribute("class", "btn-container");
 
         var button = document.createElement("button");
         button.setAttribute("id", `btn-${path}`);
         button.appendChild(document.createTextNode(path));
         button.addEventListener("click", async (e) => {
-            let versions = [];
-            try {
-                var atPath = await octokit.request('GET /repos/{owner}/{repo}/contents/{path}', {
-                    owner: 'innofake',
-                    repo: 'open-source-docs',
-                    path: `docs/${path}/versions`
-                });
-                console.log(atPath);
-                versions = atPath.data.map(v => v.name);
-
-            } catch (err) {
-                console.log(err);    
-            }
+            let versions = item.versions || [];
             clearElements();
 
-            displayFor(path, versions);
+            displayFor(path, versions, undefined, true);
         });
 
         div.appendChild(button);
 
         tree.appendChild(div);
 
-        main.appendChild(tree);
+        barDiv.appendChild(tree);
     });
-})
-.catch(err => { 
-    console.error(err);
-});
-})();
+
+    barTree.appendChild(barDiv);
+
+    main.appendChild(barTree);
+    // })
+    // .catch(err => { 
+    //     console.error(err);
+    // });
+}
+
+load(true);
