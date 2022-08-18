@@ -1,15 +1,15 @@
 {
   "repos": [
     {
-      "name": "Omni Components",
+      "name": "Omni-Components",
       "versions": [
-        "0.0.1",
         "beta"
       ]
     },
     {
-      "name": "Omni-Components",
+      "name": "Some Components",
       "versions": [
+        "0.0.1",
         "beta"
       ]
     },
