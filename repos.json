@@ -8,6 +8,12 @@
       ]
     },
     {
+      "name": "Omni-Components",
+      "versions": [
+        "beta"
+      ]
+    },
+    {
       "name": "another-repo"
     },
     {
