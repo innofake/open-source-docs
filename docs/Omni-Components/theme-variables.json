@@ -1,0 +1,86 @@
+{
+  "omni-theme-font-color": {
+    "control": "color",
+    "description": "Theme Font color.",
+    "category": "CSS Variables",
+    "subcategory": "Theme Variables",
+    "value": ""
+  },
+  "omni-theme-font-family": {
+    "control": "text",
+    "description": "Theme Font Family.",
+    "category": "CSS Variables",
+    "subcategory": "Theme Variables",
+    "value": ""
+  },
+  "omni-theme-colored-font-color": {
+    "control": "color",
+    "description": "Theme Colored Font color.",
+    "category": "CSS Variables",
+    "subcategory": "Theme Variables",
+    "value": ""
+  },
+  "omni-theme-hint-font-color": {
+    "control": "color",
+    "description": "Theme Hint Font Color.",
+    "category": "CSS Variables",
+    "subcategory": "Theme Variables",
+    "value": ""
+  },
+  "omni-theme-error-font-color": {
+    "control": "color",
+    "description": "Theme Error Font Color.",
+    "category": "CSS Variables",
+    "subcategory": "Theme Variables",
+    "value": ""
+  },
+  "omni-theme-disabled-background-color": {
+    "control": "color",
+    "description": "Theme Disable Background Color.",
+    "category": "CSS Variables",
+    "subcategory": "Theme Variables",
+    "value": ""
+  },
+  "omni-theme-disabled-border-color": {
+    "control": "color",
+    "description": "Theme Disable Border Color.",
+    "category": "CSS Variables",
+    "subcategory": "Theme Variables",
+    "value": ""
+  },
+  "omni-theme-filled-background-color": {
+    "control": "color",
+    "description": "Theme Filled Background Color.",
+    "category": "CSS Variables",
+    "subcategory": "Theme Variables",
+    "value": ""
+  },
+  "omni-theme-track-filled-background-color": {
+    "control": "color",
+    "description": "Theme Track Filled Background Color.",
+    "category": "CSS Variables",
+    "subcategory": "Theme Variables",
+    "value": ""
+  },
+  "omni-theme-track-background-color": {
+    "control": "color",
+    "description": "Theme Track Background Color.",
+    "category": "CSS Variables",
+    "subcategory": "Theme Variables",
+    "value": ""
+  },
+  "omni-theme-light-box-shadow-color": {
+    "control": "color",
+    "description": "Theme Light Box Shadow Color.",
+    "category": "CSS Variables",
+    "subcategory": "Theme Variables",
+    "value": ""
+  },
+  "omni-theme-light-background-color": {
+    "control": "color",
+    "description": "Theme Light Background Color.",
+    "category": "CSS Variables",
+    "subcategory": "Theme Variables",
+    "value": ""
+  }
+}

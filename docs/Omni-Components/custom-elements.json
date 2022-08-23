@@ -4,6 +4,155 @@
   "modules": [
     {
       "kind": "javascript-module",
+      "path": "src/button/Button.stories.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "Default"
+        },
+        {
+          "kind": "variable",
+          "name": "Secondary"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "module": "src/button/Button.stories.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Default",
+          "declaration": {
+            "name": "Default",
+            "module": "src/button/Button.stories.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Secondary",
+          "declaration": {
+            "name": "Secondary",
+            "module": "src/button/Button.stories.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/button/Button.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A control that allows an action to be executed.\n\n```js \nimport '@innofake/omni-components/button'; \n```",
+          "name": "Button",
+          "members": [
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "label",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "'primary' | 'secondary' | 'clear' | 'white' | 'icon' | string | undefined"
+              },
+              "default": "'secondary'",
+              "attribute": "type",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "attribute": "disabled",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "label",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "label"
+            },
+            {
+              "name": "type",
+              "type": {
+                "text": "'primary' | 'secondary' | 'clear' | 'white' | 'icon' | string | undefined"
+              },
+              "default": "'secondary'",
+              "fieldName": "type"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "fieldName": "disabled"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "omni-button",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Button",
+          "declaration": {
+            "name": "Button",
+            "module": "src/button/Button.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "omni-button",
+          "declaration": {
+            "name": "Button",
+            "module": "src/button/Button.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/button/README.md",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/button/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./Button.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/check/Check.stories.ts",
       "declarations": [
         {
@@ -594,7 +743,7 @@
               "type": {
                 "text": "String"
               },
-              "default": "\"html\"",
+              "default": "'html'",
               "description": "Programming language used, e.g. html, css, javascript, etc.",
               "attribute": "language",
               "reflects": true
@@ -634,7 +783,7 @@
                 {
                   "name": "source",
                   "type": {
-                    "text": "String"
+                    "text": "string"
                   }
                 }
               ]
@@ -671,7 +820,7 @@
               "type": {
                 "text": "String"
               },
-              "default": "\"html\"",
+              "default": "'html'",
               "description": "Programming language used, e.g. html, css, javascript, etc.",
               "fieldName": "language"
             },
@@ -2076,30 +2225,12 @@
     {
       "kind": "javascript-module",
       "path": "src/styles/ComponentStyles.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "DefaultCssProperties",
-          "type": {
-            "text": "object"
-          },
-          "default": "{\n    \"omni-theme-font-color\": {\n        value: \"black\",\n        control: \"color\",\n        description: \"Theme Font color\",\n        category: \"CSS Variables\",\n        subcategory: \"Theme Variables\"\n      },\n    \"omni-theme-colored-font-color\": {\n        value: \"#4E6066\",\n        control: \"color\",\n        description: \"Theme Colored Font color\",\n        category: \"CSS Variables\",\n        subcategory: \"Theme Variables\"\n      },\n    \"omni-theme-font-family\": {\n        value: \"Arial, Helvetica, sans-serif\",\n        control: \"text\",\n        description: \"Theme Font Family\",\n        category: \"CSS Variables\",\n        subcategory: \"Theme Variables\"\n      },\n    \"omni-theme-hint-font-color\": {\n        value: \"lightgrey\",\n        control: \"color\",\n        description: \"Theme Hint Font color\",\n        category: \"CSS Variables\",\n        subcategory: \"Theme Variables\"\n      },\n    \"omni-theme-error-font-color\": {\n        value: \"red\",\n        control: \"color\",\n        description: \"Theme Error Font color\",\n        category: \"CSS Variables\",\n        subcategory: \"Theme Variables\"\n      },\n    \"omni-theme-disabled-background-color\": {\n        value: \"#DEDEDE\",\n        control: \"color\",\n        description: \"Theme Disabled Background color\",\n        category: \"CSS Variables\",\n        subcategory: \"Theme Variables\"\n      },\n    \"omni-theme-disabled-border-color\": {\n        value: \"#dedede44\",\n        control: \"color\",\n        description: \"Theme Disabled Border Color\",\n        category: \"CSS Variables\",\n        subcategory: \"Theme Variables\"\n      },\n    \"omni-theme-filled-background-color\": {\n        value: \"#009DE0\",\n        control: \"color\",\n        description: \"Theme Filled Background Color\",\n        category: \"CSS Variables\",\n        subcategory: \"Theme Variables\"\n      },\n    \"omni-theme-track-filled-background-color\": {\n        value: \"#7FCAEC\",\n        control: \"color\",\n        description: \"Theme Track Filled Background Color\",\n        category: \"CSS Variables\",\n        subcategory: \"Theme Variables\"\n      },\n    \"omni-theme-track-background-color\": {\n        value: \"#7C7C7C\",\n        control: \"color\",\n        description: \"Theme Track Background Color\",\n        category: \"CSS Variables\",\n        subcategory: \"Theme Variables\"\n      },\n    \"omni-theme-light-box-shadow-color\": {\n        value: \"#E6F7FF\",\n        control: \"color\",\n        description: \"Theme Light Box Shadow Color\",\n        category: \"CSS Variables\",\n        subcategory: \"Theme Variables\"\n      },\n    \"omni-theme-light-background-color\": {\n        value: \"#FFFFFF\",\n        control: \"color\",\n        description: \"Theme Light Background Color\",\n        category: \"CSS Variables\",\n        subcategory: \"Theme Variables\"\n      },\n}",
-          "description": "The default css variables defined as a cssProps object used in https://www.npmjs.com/package/@ljcl/storybook-addon-cssprops"
-        }
-      ],
+      "declarations": [],
       "exports": [
         {
           "kind": "js",
           "name": "default",
           "declaration": {
-            "module": "src/styles/ComponentStyles.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "DefaultCssProperties",
-          "declaration": {
-            "name": "DefaultCssProperties",
             "module": "src/styles/ComponentStyles.ts"
           }
         }
@@ -2544,6 +2675,10 @@
         },
         {
           "kind": "function",
+          "name": "loadThemeVariablesRemote"
+        },
+        {
+          "kind": "function",
           "name": "loadCssPropertiesRemote",
           "return": {
             "type": {
@@ -2574,6 +2709,48 @@
               "text": "any"
             }
           }
+        },
+        {
+          "kind": "function",
+          "name": "markdownCode",
+          "parameters": [
+            {
+              "name": "code",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "lang",
+              "default": "''",
+              "type": {
+                "text": "string"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "markdownCodeRemote",
+          "parameters": [
+            {
+              "name": "src",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "lang",
+              "default": "''",
+              "type": {
+                "text": "string"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "loadThemesListRemote"
         }
       ],
       "exports": [
@@ -2603,9 +2780,33 @@
         },
         {
           "kind": "js",
-          "name": "DefaultCssProperties",
+          "name": "loadThemeVariablesRemote",
           "declaration": {
-            "name": "DefaultCssProperties",
+            "name": "loadThemeVariablesRemote",
+            "module": "src/utils/StoryUtils.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "markdownCode",
+          "declaration": {
+            "name": "markdownCode",
+            "module": "src/utils/StoryUtils.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "markdownCodeRemote",
+          "declaration": {
+            "name": "markdownCodeRemote",
+            "module": "src/utils/StoryUtils.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "loadThemesListRemote",
+          "declaration": {
+            "name": "loadThemesListRemote",
             "module": "src/utils/StoryUtils.ts"
           }
         }
@@ -2656,11 +2857,11 @@
             {
               "name": "separator",
               "default": "`.`",
+              "description": "Separator to the path split on.",
+              "optional": true,
               "type": {
                 "text": "String"
-              },
-              "description": "Separator to the path split on.",
-              "optional": true
+              }
             }
           ],
           "description": "Retrieves the value from the object in a nested fashion. Specify a path as e.g. \"food.fruit.apple\". Click [here](https://hackernoon.com/accessing-nested-objects-in-javascript-f02f1bd6387f) for more info.",
@@ -2698,11 +2899,11 @@
             {
               "name": "separator",
               "default": "'.'",
+              "description": "Separator to the path split on.",
+              "optional": true,
               "type": {
                 "text": "String"
-              },
-              "description": "Separator to the path split on.",
-              "optional": true
+              }
             }
           ],
           "description": "Assigns the value to the object in a nested fashion.\nSpecify a path as e.g. \"food.fruit.apple\".",
