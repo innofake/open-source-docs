@@ -1,84 +1,119 @@
 {
-  "omni-theme-font-color": {
+  "omni-theme-primary-color": {
     "control": "color",
-    "description": "Theme Font color.",
+    "description": "The XXXX",
+    "category": "CSS Variables",
+    "subcategory": "Theme Variables",
+    "value": ""
+  },
+  "omni-theme-accent-color": {
+    "control": "color",
+    "description": "The XXXX",
     "category": "CSS Variables",
     "subcategory": "Theme Variables",
     "value": ""
   },
   "omni-theme-font-family": {
     "control": "text",
-    "description": "Theme Font Family.",
+    "description": "The XXXX",
     "category": "CSS Variables",
     "subcategory": "Theme Variables",
     "value": ""
   },
-  "omni-theme-colored-font-color": {
-    "control": "color",
-    "description": "Theme Colored Font color.",
+  "omni-theme-font-size": {
+    "control": "text",
+    "description": "The XXXX",
     "category": "CSS Variables",
     "subcategory": "Theme Variables",
     "value": ""
   },
-  "omni-theme-hint-font-color": {
-    "control": "color",
-    "description": "Theme Hint Font Color.",
+  "omni-theme-font-weight": {
+    "control": "text",
+    "description": "The XXXX",
     "category": "CSS Variables",
     "subcategory": "Theme Variables",
     "value": ""
   },
-  "omni-theme-error-font-color": {
+  "omni-theme-font-color": {
     "control": "color",
-    "description": "Theme Error Font Color.",
+    "description": "The XXXX",
     "category": "CSS Variables",
     "subcategory": "Theme Variables",
     "value": ""
   },
-  "omni-theme-disabled-background-color": {
+  "omni-theme-background-color": {
     "control": "color",
-    "description": "Theme Disable Background Color.",
+    "description": "The XXXX",
     "category": "CSS Variables",
     "subcategory": "Theme Variables",
     "value": ""
   },
   "omni-theme-disabled-border-color": {
     "control": "color",
-    "description": "Theme Disable Border Color.",
+    "description": "The XXXX",
     "category": "CSS Variables",
     "subcategory": "Theme Variables",
     "value": ""
   },
-  "omni-theme-filled-background-color": {
+  "omni-theme-disabled-background-color": {
     "control": "color",
-    "description": "Theme Filled Background Color.",
+    "description": "The XXXX",
     "category": "CSS Variables",
     "subcategory": "Theme Variables",
     "value": ""
   },
-  "omni-theme-track-filled-background-color": {
+  "omni-theme-error-font-color": {
     "control": "color",
-    "description": "Theme Track Filled Background Color.",
+    "description": "The XXXX",
     "category": "CSS Variables",
     "subcategory": "Theme Variables",
     "value": ""
   },
-  "omni-theme-track-background-color": {
+  "omni-theme-error-border-color": {
     "control": "color",
-    "description": "Theme Track Background Color.",
+    "description": "The XXXX",
     "category": "CSS Variables",
     "subcategory": "Theme Variables",
     "value": ""
   },
-  "omni-theme-light-box-shadow-color": {
+  "omni-theme-hint-font-color": {
     "control": "color",
-    "description": "Theme Light Box Shadow Color.",
+    "description": "The XXXX",
     "category": "CSS Variables",
     "subcategory": "Theme Variables",
     "value": ""
   },
-  "omni-theme-light-background-color": {
+  "omni-theme-inactive-color": {
     "control": "color",
-    "description": "Theme Light Background Color.",
+    "description": "The XXXX",
+    "category": "CSS Variables",
+    "subcategory": "Theme Variables",
+    "value": ""
+  },
+  "omni-theme-box-shadow-color": {
+    "control": "color",
+    "description": "The XXXX",
+    "category": "CSS Variables",
+    "subcategory": "Theme Variables",
+    "value": ""
+  },
+  "omni-theme-border-radius": {
+    "control": "text",
+    "description": "The XXXX",
+    "category": "CSS Variables",
+    "subcategory": "Theme Variables",
+    "value": ""
+  },
+  "omni-theme-border-width": {
+    "control": "text",
+    "description": "The XXXX",
+    "category": "CSS Variables",
+    "subcategory": "Theme Variables",
+    "value": ""
+  },
+  "omni-theme-box-shadow": {
+    "control": "text",
+    "description": "The XXXX",
     "category": "CSS Variables",
     "subcategory": "Theme Variables",
     "value": ""

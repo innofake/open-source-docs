@@ -305,35 +305,35 @@
             },
             {
               "description": "Hint font color.",
-              "name": "--omni-check-input-hint-label-font-color"
+              "name": "--omni-check-hint-label-font-color"
             },
             {
               "description": "Hint font family.",
-              "name": "--omni-check-input-hint-label-font-family"
+              "name": "--omni-check-hint-label-font-family"
             },
             {
               "description": "Hint font size.",
-              "name": "--omni-check-input-hint-label-font-size"
+              "name": "--omni-check-hint-label-font-size"
             },
             {
               "description": "Hint font weight.",
-              "name": "--omni-check-input-hint-label-font-weight"
+              "name": "--omni-check-hint-label-font-weight"
             },
             {
               "description": "Error font color.",
-              "name": "--omni-check-input-error-label-font-color"
+              "name": "--omni-check-error-label-font-color"
             },
             {
               "description": "Error font family.",
-              "name": "--omni-check-input-error-label-font-family"
+              "name": "--omni-check-error-label-font-family"
             },
             {
               "description": "Error font size.",
-              "name": "--omni-check-input-error-label-font-size"
+              "name": "--omni-check-error-label-font-size"
             },
             {
               "description": "Error font weight.",
-              "name": "--omni-check-input-error-label-font-weight"
+              "name": "--omni-check-error-label-font-weight"
             },
             {
               "description": "Width.",
