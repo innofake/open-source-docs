@@ -157,39 +157,75 @@
       "declarations": [
         {
           "kind": "variable",
-          "name": "Default"
+          "name": "Default",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n  render: (args: ArgTypes) => html`\n    <omni-check data-testid=\"test-check\" label=\"${args.label}\" .data=\"${args.data}\" hint=\"${args.hint}\"\n      error=\"${args.error}\" ?checked=\"${args.checked}\" ?disabled=\"${args.disabled}\" ?indeterminate=\"${args.indeterminate}\">\n    </omni-check>\n  `,\n  name: 'Default',\n  parameters: {},\n  args: {\n    label: '',\n    data: {},\n    hint: '',\n    error: '',\n    checked: false,\n    disabled: false,\n    indeterminate: false,\n  },\n}"
         },
         {
           "kind": "variable",
-          "name": "Label"
+          "name": "Label",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n  render: (args: ArgTypes) => html`\n    <omni-check data-testid=\"test-check\" label=\"${args.label}\"></omni-check>\n  `,\n  args: {\n    label: 'Label'\n  },\n}"
         },
         {
           "kind": "variable",
-          "name": "Hint"
+          "name": "Hint",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n  render: (args: ArgTypes) => html`\n    <omni-check data-testid=\"test-check\" label=\"${args.label}\" hint=\"${args.hint}\"></omni-check>\n  `,\n  args: {\n    label: 'Hint',\n    hint: 'This is a hint'\n  },\n}"
         },
         {
           "kind": "variable",
-          "name": "Error"
+          "name": "Error",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n  render: (args: ArgTypes) => html`\n    <omni-check data-testid=\"test-check\" label=\"${args.label}\" error=\"${args.error}\"></omni-check>\n  `,\n  args: {\n    label: 'Error',\n    error: 'This is an error state'\n  },\n}"
         },
         {
           "kind": "variable",
-          "name": "Checked"
+          "name": "Checked",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n  render: (args: ArgTypes) => html`\n    <omni-check data-testid=\"test-check\" label=\"${args.label}\" ?checked=\"${args.checked}\"></omni-check>\n  `,\n  args: {\n    label: 'Checked',\n    checked: true\n  },\n}"
         },
         {
           "kind": "variable",
-          "name": "Indeterminate"
+          "name": "Indeterminate",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n  render: (args: ArgTypes) => html`\n    <omni-check data-testid=\"test-check\" label=\"${args.label}\" ?indeterminate=\"${args.indeterminate}\"></omni-check>\n  `,\n  args: {\n    label: 'Indeterminate',\n    indeterminate: true,\n  },\n}"
         },
         {
           "kind": "variable",
-          "name": "Disabled"
+          "name": "Disabled",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n  render: (args: ArgTypes) => html`\n    <omni-check data-testid=\"test-check\" label=\"${args.label}\" ?disabled=\"${args.disabled}\"></omni-check>\n  `,\n  args: {\n    label: 'Disabled',\n    disabled: true,\n  },\n}"
         },
         {
           "kind": "variable",
-          "name": "CustomCheckIcon"
+          "name": "CustomCheckIcon",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n  render: (args: ArgTypes) => html`\n    <omni-check data-testid=\"test-check\" label=\"${args.label}\" ?checked=\"${args.checked}\">\n      ${args.check_icon} ${args.indeterminate_icon}\n    </omni-check>\n  `,\n  args: {\n    label: 'Custom Check Icon',\n    checked: true,\n    check_icon: html`<svg slot=\"check_icon\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 442.79 410.38\" version=\"1.0\" width=\"100%\"\n                      height=\"100%\">\n                      <path style=\"stroke:#000;stroke-width:19.892;fill:#139e1c\"\n                        d=\"m-1747.2-549.3 287.72 333.9c146.6-298.83 326.06-573.74 614.52-834.75-215.89 121.82-453.86 353.14-657.14 639.38l-245.1-138.53z\"\n                        transform=\"translate(843.77 509.04) scale(.48018)\" />\n                    </svg>`,\n  },\n}"
         },
         {
           "kind": "variable",
-          "name": "CustomIndeterminateIcon"
+          "name": "CustomIndeterminateIcon",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n  render: (args: ArgTypes) => html`\n    <omni-check data-testid=\"test-check\" label=\"${args.label}\" ?indeterminate=\"${args.indeterminate}\">\n      ${args.check_icon} ${args.indeterminate_icon}\n    </omni-check>\n  `,\n  args: {\n    label: 'Custom Indeterminate Icon',\n    indeterminate: true,\n    indeterminate_icon: html`<svg slot=\"indeterminate_icon\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\" width=\"100%\" height=\"100%\">\n                              <defs>\n                                <linearGradient id=\"b\" y2=\"28.275\" gradientUnits=\"userSpaceOnUse\" x2=\"20.07\" y1=\"3.976\" x1=\"12.113\">\n                                  <stop style=\"stop-color:#525bc6\" offset=\"0\" />\n                                  <stop style=\"stop-color:#6f76db\" offset=\"1\" />\n                                </linearGradient>\n                                <linearGradient id=\"a\" y2=\"30\" gradientUnits=\"userSpaceOnUse\" x2=\"20.214\" y1=\"2\" x1=\"12.031\">\n                                  <stop style=\"stop-color:#20286d\" offset=\"0\" />\n                                  <stop style=\"stop-color:#0b102f\" offset=\"1\" />\n                                </linearGradient>\n                              </defs>\n                              <path d=\"M2.875 13C1.281 13 0 14.338 0 16s1.28 3 2.875 3h26.25C30.719 19 32 17.662 32 16s-1.281-3-2.875-3H2.875z\" />\n                              <path style=\"fill:url(#b)\" transform=\"translate(-.063 .063)\"\n                                d=\"M2.875 13.938c-1.067 0-1.938.884-1.938 2.062s.87 2.062 1.938 2.062h26.25c1.067 0 1.937-.884 1.937-2.062s-.87-2.062-1.937-2.062H2.875z\" />\n                            </svg>`,\n  },\n}"
         }
       ],
       "exports": [
@@ -615,19 +651,35 @@
       "declarations": [
         {
           "kind": "variable",
-          "name": "Default"
+          "name": "Default",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n  render: (args: ArgTypes) => html`\n    <omni-code\n      language=\"${args.language}\"\n      data-testid=\"test-code\"\n      header=\"${args.header}\"\n      content=\"${args.content}\"\n    >\n    </omni-code>\n  `,\n  name: 'Default',\n  parameters: {},\n  args: {\n    header: '',\n    content: 'Hello',\n    language: 'html',\n  },\n}"
         },
         {
           "kind": "variable",
-          "name": "HTML_as_content"
+          "name": "HTML_as_content",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n  render: (args: ArgTypes) => html`\n    <omni-code\n      language=\"${args.language}\"\n      data-testid=\"test-code\"\n      header=\"${args.header}\"\n      content=\"${args.content}\"\n    >\n    </omni-code>\n  `,\n  args: {\n    header: 'HTML',\n    content: `  \n   <div>\n     <h1>Hello World</h1>\n   </div>\n  `,\n    language: 'html',\n  },\n}"
         },
         {
           "kind": "variable",
-          "name": "HTML_as_child_element"
+          "name": "HTML_as_child_element",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n  render: (args: ArgTypes) => html`\n    <omni-code\n      language=\"${args.language}\"\n      data-testid=\"test-code\"\n      header=\"${args.header}\"\n      content=\"${args.content}\"\n    >\n      <div>\n        <h1>Hello World</h1>\n      </div>\n    </omni-code>\n  `,\n  args: {\n    header: 'HTML as child element',\n    language: 'html',\n  },\n}"
         },
         {
           "kind": "variable",
-          "name": "JavaScript"
+          "name": "JavaScript",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n  render: (args: ArgTypes) => html`\n    <omni-code\n      language=\"${args.language}\"\n      data-testid=\"test-code\"\n      header=\"${args.header}\"\n      content=\"${args.content}\"\n    >\n    </omni-code>\n  `,\n  args: {\n    header: 'JavaScript',\n    content: `  \n    alert('this is javascript');\n  `,\n    language: 'javascript',\n  },\n}"
         }
       ],
       "exports": [
@@ -887,23 +939,43 @@
       "declarations": [
         {
           "kind": "variable",
-          "name": "Default"
+          "name": "Default",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n  render: (args: ArgTypes) => html`\n    <!-- Icons loaded by content path instead of font-based or slotted content will not be able to be styled directly -->\n\n    <omni-icon data-testid=\"test-icon\" size=\"${args.size}\" icon=\"${args.icon}\">\n      ${args.svg}\n    </omni-icon>\n  `,\n  name: 'Default',\n  parameters: {},\n  args: {\n    size: 'default',\n    svg: html`<svg\n                version=\"1.1\"\n                viewBox=\"0 0 16 16\"\n                xmlns=\"http://www.w3.org/2000/svg\"\n                width=\"100%\"\n                height=\"100%\"\n              >\n                <g transform=\"translate(-2,-2)\">\n                  <path d=\"m8.229 14.062-3.521-3.541L5.75 9.479l2.479 2.459 6.021-6L15.292 7Z\" />\n                </g>\n              </svg>`,\n    icon: undefined as string,\n  },\n}"
         },
         {
           "kind": "variable",
-          "name": "SVG"
+          "name": "SVG",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n  render: (args: ArgTypes) => html`\n    <omni-icon data-testid=\"test-icon\" size=\"${args.size}\"> \n      ${args.svg} \n    </omni-icon>\n  `,\n  name: 'SVG',\n  parameters: {},\n  args: {\n    size: 'large',\n    svg: html`<svg\n                version=\"1.1\"\n                viewBox=\"0 0 16 16\"\n                xmlns=\"http://www.w3.org/2000/svg\"\n                width=\"100%\"\n                height=\"100%\"\n              >\n                <g transform=\"translate(-2,-2)\">\n                  <path d=\"m8.229 14.062-3.521-3.541L5.75 9.479l2.479 2.459 6.021-6L15.292 7Z\" />\n                </g>\n              </svg>`,\n  },\n}"
         },
         {
           "kind": "variable",
-          "name": "IconPath"
+          "name": "IconPath",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n  render: (args: ArgTypes) => html`\n    <!-- Icons loaded by content path instead of font-based or slotted content will not be able to be styled directly -->\n\n    <omni-icon data-testid=\"test-icon\" size=\"${args.size}\" icon=\"${args.icon}\"></omni-icon>\n  `,\n  name: 'Local Source',\n  parameters: {},\n  args: {\n    size: 'default',\n    icon: '/assets/colors.svg',\n  },\n}"
         },
         {
           "kind": "variable",
-          "name": "URL"
+          "name": "URL",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n  render: (args: ArgTypes) => html`\n    <!-- Icons loaded by content path instead of font-based or slotted content will not be able to be styled directly -->\n\n    <omni-icon data-testid=\"test-icon\" size=\"${args.size}\" icon=\"${args.icon}\"></omni-icon>\n  `,\n  name: 'Remote Source',\n  parameters: {},\n  args: {\n    size: 'default',\n    icon: 'https://img.shields.io/badge/Source-remote-lightgrey.svg'\n  },\n}"
         },
         {
           "kind": "variable",
-          "name": "Material"
+          "name": "Material",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n  render: (args: ArgTypes) => html`\n    <!-- Add Material to your project, e.g. Adding below link in <head>-->\n    <link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\" />\n    <!-- ------------------------------------------------------------- -->\n\n    <omni-icon data-testid=\"test-icon\" size=\"${args.size}\" icon=\"${args.icon}\"> </omni-icon>\n  `,\n  args: {\n    size: 'default',\n    icon: '@material/receipt_long'\n  }\n}"
         }
       ],
       "exports": [
@@ -1162,19 +1234,35 @@
       "declarations": [
         {
           "kind": "variable",
-          "name": "Default"
+          "name": "Default",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n  render: (args: ArgTypes) => html`\n    <omni-label label=\"${args.label}\" type=\"${args.type}\"> </omni-label>\n  `,\n  name: 'Default',\n  parameters: {},\n  args: {\n    label: 'Label',\n    type: 'default',\n  },\n}"
         },
         {
           "kind": "variable",
-          "name": "Title"
+          "name": "Title",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n  render: (args: ArgTypes) => html`\n    <omni-label label=\"${args.label}\" type=\"${args.type}\"> </omni-label>\n  `,\n  args: {\n    label: 'Title',\n    type: 'title',\n  },\n}"
         },
         {
           "kind": "variable",
-          "name": "Subtitle"
+          "name": "Subtitle",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n  render: (args: ArgTypes) => html`\n    <omni-label label=\"${args.label}\" type=\"${args.type}\"> </omni-label>\n  `,\n  args: {\n    label: 'Subtitle',\n    type: 'subtitle',\n  },\n}"
         },
         {
           "kind": "variable",
-          "name": "Strong"
+          "name": "Strong",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n  render: (args: ArgTypes) => html`\n    <omni-label label=\"${args.label}\" type=\"${args.type}\"> </omni-label>\n  `,\n  args: {\n    label: 'Strong',\n    type: 'strong',\n  },\n}"
         }
       ],
       "exports": [
@@ -1383,27 +1471,51 @@
       "declarations": [
         {
           "kind": "variable",
-          "name": "Default"
+          "name": "Default",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n  render: (args: ArgTypes) => html`\n    <omni-radio label=\"${ifDefined(args.label ? args.label : undefined)}\" .data=\"${args.data}\" hint=\"${ifDefined(args.hint ? args.hint : undefined)}\" error=\"${ifDefined(args.error ? args.error : undefined)}\" ?checked=\"${args.checked}\" ?disabled=\"${args.disabled}\"></omni-radio>\n  `,\n  name: 'Default',\n  parameters: {},\n  args: {\n    label: '',\n    data: {},\n    hint: '',\n    error: '',\n    checked: false,\n    disabled: false,\n  },\n}"
         },
         {
           "kind": "variable",
-          "name": "Label"
+          "name": "Label",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n  render: (args: ArgTypes) => html`\n    <omni-radio label=\"${args.label}\"></omni-radio>\n  `,\n  args: {\n    label: 'Label',\n  },\n}"
         },
         {
           "kind": "variable",
-          "name": "Hint"
+          "name": "Hint",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n  render: (args: ArgTypes) => html`\n    <omni-radio label=\"${args.label}\" hint=\"${args.hint}\"></omni-radio>\n  `,\n  args: {\n    label: 'Hint',\n    hint: 'This is a hint'\n  },\n}"
         },
         {
           "kind": "variable",
-          "name": "Error"
+          "name": "Error",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n  render: (args: ArgTypes) => html`\n    <omni-radio label=\"${args.label}\" error=\"${args.error}\"></omni-radio>\n  `,\n  args: {\n    label: 'Error',\n    error: 'This is an error state'\n  },\n}"
         },
         {
           "kind": "variable",
-          "name": "Checked"
+          "name": "Checked",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n  render: (args: ArgTypes) => html`\n    <omni-radio label=\"${args.label}\" ?checked=\"${args.checked}\"></omni-radio>\n  `,\n  args: {\n    label: 'Checked',\n    checked: true,\n  },\n}"
         },
         {
           "kind": "variable",
-          "name": "Disabled"
+          "name": "Disabled",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n  render: (args: ArgTypes) => html`\n    <omni-radio label=\"${args.label}\" ?disabled=\"${args.disabled}\"></omni-radio>\n  `,\n  args: {\n    label: 'Disabled',\n    disabled: true,\n  },\n}"
         }
       ],
       "exports": [
@@ -2248,27 +2360,51 @@
       "declarations": [
         {
           "kind": "variable",
-          "name": "Default"
+          "name": "Default",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n  render: (args: ArgTypes) => html`\n    <omni-switch\n      data-testid=\"test-switch\"\n      label=\"${args.label}\"\n      .data=\"${args.data}\"\n      hint=\"${args.hint}\"\n      error=\"${args.error}\"\n      ?checked=\"${args.checked}\"\n      ?disabled=\"${args.disabled}\"\n    >\n    </omni-switch>\n  `,\n  name: 'Default',\n  parameters: {},\n  args: {\n    label: '',\n    data: {},\n    hint: '',\n    error: '',\n    checked: false,\n    disabled: false,\n  },\n  play: async (context: { canvasElement: HTMLElement; }) => {\n    const canvas = within(context.canvasElement);\n    const Switch = canvas.getByTestId(`test-switch`);\n    console.log(Switch);\n    const valueChange = jest.fn();\n    Switch.addEventListener('value-change', () => valueChange());\n    const content = Switch.shadowRoot.getElementById(`content`);\n    console.log(content);\n    await userEvent.click(content);\n    await userEvent.click(content);\n    await expect(valueChange).toBeCalledTimes(2);\n  },\n}"
         },
         {
           "kind": "variable",
-          "name": "Label"
+          "name": "Label",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n  render: (args: ArgTypes) => html`\n    <omni-switch data-testid=\"test-switch\" label=\"${args.label}\"></omni-switch>\n  `,\n  args: {\n    label: 'Label'\n  },\n}"
         },
         {
           "kind": "variable",
-          "name": "Hint"
+          "name": "Hint",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n  render: (args: ArgTypes) => html`\n    <omni-switch data-testid=\"test-switch\" label=\"${args.label}\" hint=\"${args.hint}\"></omni-switch>\n  `,\n  args: {\n    label: 'Hint',\n    hint: 'This is a hint'\n  },\n}"
         },
         {
           "kind": "variable",
-          "name": "Error"
+          "name": "Error",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n  render: (args: ArgTypes) => html`\n    <omni-switch data-testid=\"test-switch\" label=\"${args.label}\" error=\"${args.error}\"></omni-switch>\n  `,\n  args: {\n    label: 'Error',\n    error: 'This is an error state'\n  },\n}"
         },
         {
           "kind": "variable",
-          "name": "Checked"
+          "name": "Checked",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n  render: (args: ArgTypes) => html`\n    <omni-switch data-testid=\"test-switch\" label=\"${args.label}\" ?checked=\"${args.checked}\"></omni-switch>\n  `,\n  args: {\n    label: 'Checked',\n    checked: true,\n  },\n}"
         },
         {
           "kind": "variable",
-          "name": "Disabled"
+          "name": "Disabled",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n  render: (args: ArgTypes) => html`\n    <omni-switch\n      data-testid=\"test-switch\" label=\"${args.label}\" ?disabled=\"${args.disabled}\"></omni-switch>\n  `,\n  args: {\n    label: 'Disabled',\n    disabled: true,\n  },\n}"
         }
       ],
       "exports": [
