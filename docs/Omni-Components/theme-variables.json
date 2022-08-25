@@ -6,6 +6,20 @@
     "subcategory": "Theme Variables",
     "value": ""
   },
+  "omni-theme-primary-hover-color": {
+    "control": "color",
+    "description": "The XXXX",
+    "category": "CSS Variables",
+    "subcategory": "Theme Variables",
+    "value": ""
+  },
+  "omni-theme-primary-active-color": {
+    "control": "color",
+    "description": "The XXXX",
+    "category": "CSS Variables",
+    "subcategory": "Theme Variables",
+    "value": ""
+  },
   "omni-theme-accent-color": {
     "control": "color",
     "description": "The XXXX",
@@ -13,28 +27,14 @@
     "subcategory": "Theme Variables",
     "value": ""
   },
-  "omni-theme-font-family": {
-    "control": "text",
+  "omni-theme-accent-hover-color": {
+    "control": "color",
     "description": "The XXXX",
     "category": "CSS Variables",
     "subcategory": "Theme Variables",
     "value": ""
   },
-  "omni-theme-font-size": {
-    "control": "text",
-    "description": "The XXXX",
-    "category": "CSS Variables",
-    "subcategory": "Theme Variables",
-    "value": ""
-  },
-  "omni-theme-font-weight": {
-    "control": "text",
-    "description": "The XXXX",
-    "category": "CSS Variables",
-    "subcategory": "Theme Variables",
-    "value": ""
-  },
-  "omni-theme-font-color": {
+  "omni-theme-accent-active-color": {
     "control": "color",
     "description": "The XXXX",
     "category": "CSS Variables",
@@ -42,6 +42,27 @@
     "value": ""
   },
   "omni-theme-background-color": {
+    "control": "color",
+    "description": "The XXXX",
+    "category": "CSS Variables",
+    "subcategory": "Theme Variables",
+    "value": ""
+  },
+  "omni-theme-background-hover-color": {
+    "control": "color",
+    "description": "The XXXX",
+    "category": "CSS Variables",
+    "subcategory": "Theme Variables",
+    "value": ""
+  },
+  "omni-theme-background-active-color": {
+    "control": "color",
+    "description": "The XXXX",
+    "category": "CSS Variables",
+    "subcategory": "Theme Variables",
+    "value": ""
+  },
+  "omni-theme-font-color": {
     "control": "color",
     "description": "The XXXX",
     "category": "CSS Variables",
@@ -92,6 +113,27 @@
   },
   "omni-theme-box-shadow-color": {
     "control": "color",
+    "description": "The XXXX",
+    "category": "CSS Variables",
+    "subcategory": "Theme Variables",
+    "value": ""
+  },
+  "omni-theme-font-family": {
+    "control": "text",
+    "description": "The XXXX",
+    "category": "CSS Variables",
+    "subcategory": "Theme Variables",
+    "value": ""
+  },
+  "omni-theme-font-size": {
+    "control": "text",
+    "description": "The XXXX",
+    "category": "CSS Variables",
+    "subcategory": "Theme Variables",
+    "value": ""
+  },
+  "omni-theme-font-weight": {
+    "control": "text",
     "description": "The XXXX",
     "category": "CSS Variables",
     "subcategory": "Theme Variables",

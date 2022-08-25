@@ -8,11 +8,43 @@
       "declarations": [
         {
           "kind": "variable",
-          "name": "Default"
+          "name": "Interactive",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n    render: (args: Args) => html`\n    <omni-button\n        data-testid=\"test-button\"\n        type=\"${args.type}\"\n        label=\"${ifNotEmpty(args.label)}\"\n        slot-position=\"${args.slotPosition}\"\n        ?disabled=${args.disabled}>\n        <omni-icon icon=\"@material/thumb_up\"></omni-icon>\n    </omni-button>\n  `,\n    name: 'Interactive',\n    args: {\n        type: 'secondary',\n        label: 'Button',\n        slotPosition: 'top',\n        disabled: false,\n    },\n    play: async (context: StoryContext) => {\n        const button = within(context.canvasElement).getByTestId<Button>('test-button');\n        const click = jest.fn();\n        button.addEventListener('click', () => click());\n        await userEvent.click(button);\n        await userEvent.click(button);\n        await expect(click).toBeCalledTimes(2);\n    },\n}"
         },
         {
           "kind": "variable",
-          "name": "Secondary"
+          "name": "Type",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n    render: (args: Args) => html`\n    <omni-button type=\"${args.type}\" label=\"${args.label}\" data-testid=\"test-button\"></omni-button>\n  `,\n    name: 'Type',\n    args: {\n        type: 'primary',\n        label: 'Click',\n    },\n    play: async (context: StoryContext) => {\n        const button = within(context.canvasElement).getByTestId<Button>('test-button');\n        const buttonElement = button.shadowRoot.getElementById('button');\n        const foundPrimaryClass = buttonElement.classList.contains('primary');\n        await expect(foundPrimaryClass).toBeTruthy();\n    },\n}"
+        },
+        {
+          "kind": "variable",
+          "name": "Label",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n    render: (args: Args) => html`\n    <omni-button label=\"${args.label}\" data-testid=\"test-button\"></omni-button>\n  `,\n    name: 'Label',\n    args: {\n        label: 'Click',\n    },\n    play: async (context: StoryContext) => {\n        const button = within(context.canvasElement).getByTestId<Button>('test-button');\n        const labelElement = button.shadowRoot.getElementById('label');\n        const labelMatches = labelElement.innerText === Label.args.label;\n        await expect(labelMatches).toBeTruthy();\n    },\n}"
+        },
+        {
+          "kind": "variable",
+          "name": "Slot",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n    render: () => html`\n    <omni-button data-testid=\"test-button\">\n      <omni-icon size=\"default\" icon=\"/assets/direction.svg\"></omni-icon>\n    </omni-button>\n  `,\n    name: 'Slot',\n    args: {},\n    play: async (context: StoryContext) => {\n        const button = within(context.canvasElement).getByTestId<Button>('test-button');\n        const slotElement = button.shadowRoot.querySelector('slot');\n        const foundSlottedOmniIconElement = slotElement\n            .assignedElements()\n            .find((e) => e.tagName.toLowerCase() === 'omni-icon');\n        await expect(foundSlottedOmniIconElement).toBeTruthy();\n    },\n}"
+        },
+        {
+          "kind": "variable",
+          "name": "Disabled",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n    render: (args: Args) => html`\n    <omni-button disabled label=\"${args.label}\" data-testid=\"test-button\"></omni-button>\n  `,\n    name: 'Disabled',\n    args: {\n        label: 'Disabled',\n    },\n    play: async (context: StoryContext) => {\n        const button = within(context.canvasElement).getByTestId<Button>('test-button'); // Test for disabled CSS.\n\n        const buttonElement = button.shadowRoot.getElementById('button');\n        const foundDisabledClass = buttonElement.classList.contains('disabled');\n        await expect(foundDisabledClass).toBeTruthy(); // Test for not clickable.\n\n        const click = jest.fn();\n        button.addEventListener('click', () => click());\n        await userEvent.click(button);\n        await userEvent.click(button);\n        await expect(click).toBeCalledTimes(0);\n    },\n}"
         }
       ],
       "exports": [
@@ -25,17 +57,41 @@
         },
         {
           "kind": "js",
-          "name": "Default",
+          "name": "Interactive",
           "declaration": {
-            "name": "Default",
+            "name": "Interactive",
             "module": "src/button/Button.stories.ts"
           }
         },
         {
           "kind": "js",
-          "name": "Secondary",
+          "name": "Type",
           "declaration": {
-            "name": "Secondary",
+            "name": "Type",
+            "module": "src/button/Button.stories.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Label",
+          "declaration": {
+            "name": "Label",
+            "module": "src/button/Button.stories.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Slot",
+          "declaration": {
+            "name": "Slot",
+            "module": "src/button/Button.stories.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Disabled",
+          "declaration": {
+            "name": "Disabled",
             "module": "src/button/Button.stories.ts"
           }
         }
@@ -49,13 +105,190 @@
           "kind": "class",
           "description": "A control that allows an action to be executed.\n\n```js \nimport '@innofake/omni-components/button'; \n```",
           "name": "Button",
+          "cssProperties": [
+            {
+              "description": "Component font family.",
+              "name": "--omni-button-font-family"
+            },
+            {
+              "description": "Component font size.",
+              "name": "--omni-button-font-size"
+            },
+            {
+              "description": "Component font weight.",
+              "name": "--omni-button-font-weight"
+            },
+            {
+              "description": "Component line height.",
+              "name": "--omni-button-line-height"
+            },
+            {
+              "description": "Component border radius.",
+              "name": "--omni-button-border-radius"
+            },
+            {
+              "description": "Component padding top.",
+              "name": "--omni-button-padding-top"
+            },
+            {
+              "description": "Component padding bottom.",
+              "name": "--omni-button-padding-bottom"
+            },
+            {
+              "description": "Component padding left.",
+              "name": "--omni-button-padding-left"
+            },
+            {
+              "description": "Component padding right.",
+              "name": "--omni-button-padding-right"
+            },
+            {
+              "description": "Primary \"type\" background color.",
+              "name": "--omni-button-primary-background-color"
+            },
+            {
+              "description": "Primary \"type\" border color.",
+              "name": "--omni-button-primary-border-color"
+            },
+            {
+              "description": "Primary \"type\" border width.",
+              "name": "--omni-button-primary-border-width"
+            },
+            {
+              "description": "Primary \"type\" color.",
+              "name": "--omni-button-primary-color"
+            },
+            {
+              "description": "Primary \"type\" active back color.",
+              "name": "--omni-button-primary-active-background-color"
+            },
+            {
+              "description": "Secondary \"type\" background color.",
+              "name": "--omni-button-secondary-background-color"
+            },
+            {
+              "description": "Secondary \"type\" border color.",
+              "name": "--omni-button-secondary-border-color"
+            },
+            {
+              "description": "Secondary \"type\" border width.",
+              "name": "--omni-button-secondary-border-width"
+            },
+            {
+              "description": "Secondary \"type\" color.",
+              "name": "--omni-button-secondary-color"
+            },
+            {
+              "description": "Secondary \"type\" active background color.",
+              "name": "--omni-button-secondary-active-background-color"
+            },
+            {
+              "description": "Clear \"type\" background color.",
+              "name": "--omni-button-clear-background-color"
+            },
+            {
+              "description": "Clear \"type\" border color.",
+              "name": "--omni-button-clear-border-color"
+            },
+            {
+              "description": "Clear \"type\" border width.",
+              "name": "--omni-button-clear-border-width"
+            },
+            {
+              "description": "Clear \"type\" color.",
+              "name": "--omni-button-clear-color"
+            },
+            {
+              "description": "XXXX",
+              "name": "--omni-button-clear-hover-background-color"
+            },
+            {
+              "description": "Clear \"type\" active background color.",
+              "name": "--omni-button-clear-active-background-color"
+            },
+            {
+              "description": "Clear \"type\" active border color.",
+              "name": "--omni-button-clear-active-border-color"
+            },
+            {
+              "description": "Clear \"type\" active border width.",
+              "name": "--omni-button-clear-active-border-width"
+            },
+            {
+              "description": "White \"type\" background color.",
+              "name": "--omni-button-white-background-color"
+            },
+            {
+              "description": "White \"type\" border color.",
+              "name": "--omni-button-white-border-color"
+            },
+            {
+              "description": "White \"type\" border width.",
+              "name": "--omni-button-white-border-width"
+            },
+            {
+              "description": "White \"type\" color.",
+              "name": "--omni-button-white-color"
+            },
+            {
+              "description": "White \"type\" hover background color.",
+              "name": "--omni-button-white-hover-background-color"
+            },
+            {
+              "description": "White \"type\" active background color.",
+              "name": "--omni-button-white-active-background-color"
+            },
+            {
+              "description": "White \"type\" active border color.",
+              "name": "--omni-button-white-active-border-color"
+            },
+            {
+              "description": "White \"type\" active border width.",
+              "name": "--omni-button-white-active-border-width"
+            },
+            {
+              "description": "Disabled border color.",
+              "name": "--omni-button-disabled-border-color"
+            },
+            {
+              "description": "Disabled background color.",
+              "name": "--omni-button-disabled-background-color"
+            },
+            {
+              "description": "Disabled active background color.",
+              "name": "--omni-button-disabled-active-hover-background-color"
+            },
+            {
+              "description": "Slot margin left (When positioned right of label).",
+              "name": "--omni-button-slot-margin-right"
+            },
+            {
+              "description": "Slot margin bottom (When positioned top of label).",
+              "name": "--omni-button-slot-margin-bottom"
+            },
+            {
+              "description": "Slot margin left (When positioned right of label).",
+              "name": "--omni-button-slot-margin-left"
+            },
+            {
+              "description": "Slot margin top (When positioned bottom of label).",
+              "name": "--omni-button-slot-margin-top"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Content to render inside button, can be positioned using {@link slotPosition} property.",
+              "name": "default"
+            }
+          ],
           "members": [
             {
               "kind": "field",
               "name": "label",
               "type": {
-                "text": "string | undefined"
+                "text": "string"
               },
+              "description": "Text label.",
               "attribute": "label",
               "reflects": true
             },
@@ -63,43 +296,92 @@
               "kind": "field",
               "name": "type",
               "type": {
-                "text": "'primary' | 'secondary' | 'clear' | 'white' | 'icon' | string | undefined"
+                "text": "\"primary\"|\"secondary\"|\"clear\"|\"white\""
               },
-              "default": "'secondary'",
+              "default": "\"secondary\"",
+              "description": "Display type.",
               "attribute": "type",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "slotPosition",
+              "type": {
+                "text": "\"left\"|\"top\"|\"right\"|\"bottom\""
+              },
+              "description": "Position of slotted content.",
+              "default": "\"left\"",
+              "attribute": "slot-position",
               "reflects": true
             },
             {
               "kind": "field",
               "name": "disabled",
               "type": {
-                "text": "boolean | undefined"
+                "text": "boolean"
               },
+              "description": "Indicator if the component is disabled.",
+              "default": "false",
               "attribute": "disabled",
               "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "_click",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "click",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "When the button component is clicked."
             }
           ],
           "attributes": [
             {
               "name": "label",
               "type": {
-                "text": "string | undefined"
+                "text": "string"
               },
+              "description": "Text label.",
               "fieldName": "label"
             },
             {
               "name": "type",
               "type": {
-                "text": "'primary' | 'secondary' | 'clear' | 'white' | 'icon' | string | undefined"
+                "text": "\"primary\"|\"secondary\"|\"clear\"|\"white\""
               },
-              "default": "'secondary'",
+              "default": "\"secondary\"",
+              "description": "Display type.",
               "fieldName": "type"
+            },
+            {
+              "name": "slot-position",
+              "type": {
+                "text": "\"left\"|\"top\"|\"right\"|\"bottom\""
+              },
+              "description": "Position of slotted content.",
+              "default": "\"left\"",
+              "fieldName": "slotPosition"
             },
             {
               "name": "disabled",
               "type": {
-                "text": "boolean | undefined"
+                "text": "boolean"
               },
+              "description": "Indicator if the component is disabled.",
+              "default": "false",
               "fieldName": "disabled"
             }
           ],
@@ -109,6 +391,22 @@
           },
           "tagName": "omni-button",
           "customElement": true
+        },
+        {
+          "kind": "variable",
+          "name": "buttonType",
+          "type": {
+            "text": "['primary', 'secondary', 'clear', 'white']"
+          },
+          "default": "['primary', 'secondary', 'clear', 'white']"
+        },
+        {
+          "kind": "variable",
+          "name": "slotPositionType",
+          "type": {
+            "text": "['left', 'top', 'right', 'bottom']"
+          },
+          "default": "['left', 'top', 'right', 'bottom']"
         }
       ],
       "exports": [
@@ -125,6 +423,22 @@
           "name": "omni-button",
           "declaration": {
             "name": "Button",
+            "module": "src/button/Button.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "buttonType",
+          "declaration": {
+            "name": "buttonType",
+            "module": "src/button/Button.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "slotPositionType",
+          "declaration": {
+            "name": "slotPositionType",
             "module": "src/button/Button.ts"
           }
         }
@@ -2661,18 +2975,18 @@
           ],
           "events": [
             {
-              "name": "value-changed",
+              "name": "value-change",
               "type": {
                 "text": "CustomEvent<{ old: Boolean; new: Boolean; }>"
               },
               "description": "Dispatched when the switch checked state is changed."
             },
             {
-              "name": "value-change",
               "type": {
                 "text": "CustomEvent<{ old: Boolean; new: Boolean; }>"
               },
-              "description": "Dispatched when the switch checked state is changed."
+              "description": "Dispatched when the switch checked state is changed.",
+              "name": "value-changed"
             }
           ],
           "attributes": [
