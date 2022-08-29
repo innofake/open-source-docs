@@ -1459,29 +1459,32 @@
       "path": "src/icons/Check.icon.ts",
       "declarations": [
         {
-          "kind": "function",
-          "name": "check_icon",
-          "return": {
-            "type": {
-              "text": "TemplateResult"
-            }
-          }
+          "kind": "class",
+          "description": "A check icon component\n\n```js \nimport '@innofake/omni-components/icons/Check.icon.js'; \n```",
+          "name": "CheckIcon",
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "omni-check-icon",
+          "customElement": true
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "default",
+          "name": "CheckIcon",
           "declaration": {
-            "name": "check_icon",
+            "name": "CheckIcon",
             "module": "src/icons/Check.icon.ts"
           }
         },
         {
-          "kind": "js",
-          "name": "check_icon",
+          "kind": "custom-element-definition",
+          "name": "omni-check-icon",
           "declaration": {
-            "name": "check_icon",
+            "name": "CheckIcon",
             "module": "src/icons/Check.icon.ts"
           }
         }
@@ -1492,33 +1495,42 @@
       "path": "src/icons/Indeterminate.icon.ts",
       "declarations": [
         {
-          "kind": "function",
-          "name": "indeterminate_icon",
-          "return": {
-            "type": {
-              "text": "TemplateResult"
-            }
-          }
+          "kind": "class",
+          "description": "An indeterminate icon component\n\n```js \nimport '@innofake/omni-components/icons/Indeterminate.icon.js'; \n```",
+          "name": "IndeterminateIcon",
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "omni-indeterminate-icon",
+          "customElement": true
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "default",
+          "name": "IndeterminateIcon",
           "declaration": {
-            "name": "indeterminate_icon",
+            "name": "IndeterminateIcon",
             "module": "src/icons/Indeterminate.icon.ts"
           }
         },
         {
-          "kind": "js",
-          "name": "indeterminate_icon",
+          "kind": "custom-element-definition",
+          "name": "omni-indeterminate-icon",
           "declaration": {
-            "name": "indeterminate_icon",
+            "name": "IndeterminateIcon",
             "module": "src/icons/Indeterminate.icon.ts"
           }
         }
       ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/icons/README.md",
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",
