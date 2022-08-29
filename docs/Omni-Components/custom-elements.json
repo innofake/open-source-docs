@@ -278,7 +278,7 @@
           "slots": [
             {
               "description": "Content to render inside button, can be positioned using {@link slotPosition} property.",
-              "name": "default"
+              "name": ""
             }
           ],
           "members": [
@@ -324,28 +324,6 @@
               "default": "false",
               "attribute": "disabled",
               "reflects": true
-            },
-            {
-              "kind": "method",
-              "name": "_click",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            }
-          ],
-          "events": [
-            {
-              "name": "click",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "When the button component is clicked."
             }
           ],
           "attributes": [
