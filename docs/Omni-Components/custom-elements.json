@@ -1227,6 +1227,359 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/hyperlink/Hyperlink.stories.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "Interactive",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n  render: (args: ArgTypes) => html`\n    <omni-hyperlink\n      data-testid=\"test-hyperlink\"\n      label=\"${ifNotEmpty(args.label)}\"\n      href=\"${ifNotEmpty(args.href)}\"\n      target=\"${ifNotEmpty(args.target)}\"\n      ?disabled=\"${args.disabled}\"\n      ?inline=\"${args.inline}\"\n      size=\"${args.size}\"\n    ></omni-hyperlink>\n  `,\n  name: 'Interactive',\n  args: {\n    label: 'Click',\n    href: '',\n    target: '',\n    disabled: false,\n    inline: false,\n    size: '',\n  },\n  play: async (context :{ canvasElement: HTMLElement;}) => {\n    const canvas = within(context.canvasElement);\n    const Hyperlink = canvas.getByTestId('test-hyperlink');\n    const click = jest.fn();\n    Hyperlink.addEventListener('click', () => click());\n    await userEvent.click(Hyperlink);\n    await userEvent.click(Hyperlink);\n    await expect(click).toBeCalledTimes(2);\n  },\n}"
+        },
+        {
+          "kind": "variable",
+          "name": "Label",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n  render: (args: ArgTypes) => html`<omni-hyperlink data-testid=\"test-hyperlink\" label=\"${args.label}\"></omni-hyperlink>`,\n  name:'Label',\n  args: {\n    label:'Click',\n  },\n  play: async (context :{ canvasElement: HTMLElement;}) => {\n    const canvas = within(context.canvasElement);\n    const Hyperlink = canvas.getByTestId('test-hyperlink');\n    await expect(Hyperlink.shadowRoot.querySelector('a')).toHaveTextContent(Label.args.label);\n  }\n}"
+        },
+        {
+          "kind": "variable",
+          "name": "Size",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n  render: (args: ArgTypes) => html`<omni-hyperlink data-testid=\"test-hyperlink\" label=\"${args.label}\" size=\"${args.size}\"></omni-hyperlink>`,\n  name:'Size',\n  args: {\n    label:'Click',\n    size:'small',\n  },\n  play: async (context :{ canvasElement: HTMLElement;}) => {\n    const canvas = within(context.canvasElement);\n    const Hyperlink = canvas.getByTestId('test-hyperlink');\n    await expect(Hyperlink).toHaveAttribute('size', Size.args.size);\n  }\n}"
+        },
+        {
+          "kind": "variable",
+          "name": "Href",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n  render: (args: ArgTypes) => html`<omni-hyperlink data-testid=\"test-hyperlink\" label=\"${args.label}\" href=\"${args.href}\"></omni-hyperlink>`,\n  name: 'Href',\n  args: {\n    label:'Click',\n    href:'http://example.com'\n  },\n  play: async (context :{ canvasElement: HTMLElement;}) => {\n    const canvas = within(context.canvasElement);\n    const Hyperlink = canvas.getByTestId('test-hyperlink');\n    await expect(Hyperlink).toHaveAttribute('href', Href.args.href);\n  }\n}"
+        },
+        {
+          "kind": "variable",
+          "name": "Disabled",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n  render: (args: ArgTypes) => html`<omni-hyperlink data-testid=\"test-hyperlink\" label=\"${args.label}\" ?disabled=\"${args.disabled}\"></omni-hyperlink>`,\n  name:'Disabled',\n  args: {\n    label:'Click',\n    disabled:true,\n  },\n  play: async (context: { canvasElement: HTMLElement; }) => {\n    const canvas = within(context.canvasElement);\n\n    const Hyperlink = canvas.getByTestId('test-hyperlink');\n\n    const click = jest.fn();\n    Hyperlink.addEventListener('click', () => click());\n\n    await userEvent.click(Hyperlink);\n    await userEvent.click(Hyperlink);\n    await expect(click).toBeCalledTimes(0);\n  }\n}"
+        },
+        {
+          "kind": "variable",
+          "name": "Inline",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n  render: (args: ArgTypes) => html`<p data-testid=\"test-paragraph\">Inline <omni-hyperlink label=\"${args.label}\" ?inline=\"${args.inline}\"></omni-hyperlink> example</p>`,\n  name:'Inline',\n  args: {\n    label:'Click',\n    inline:true\n  },\n  play: async (context: { canvasElement: HTMLElement; }) => {\n    const canvas = within(context.canvasElement);\n\n    const paragraph = canvas.getByTestId('test-paragraph');\n    const hyperlinkElement = paragraph.querySelector<HTMLElement>('omni-hyperlink');\n\n    await expect(paragraph).toContainElement(hyperlinkElement);\n  }\n}"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "module": "src/hyperlink/Hyperlink.stories.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Interactive",
+          "declaration": {
+            "name": "Interactive",
+            "module": "src/hyperlink/Hyperlink.stories.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Label",
+          "declaration": {
+            "name": "Label",
+            "module": "src/hyperlink/Hyperlink.stories.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Size",
+          "declaration": {
+            "name": "Size",
+            "module": "src/hyperlink/Hyperlink.stories.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Href",
+          "declaration": {
+            "name": "Href",
+            "module": "src/hyperlink/Hyperlink.stories.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Disabled",
+          "declaration": {
+            "name": "Disabled",
+            "module": "src/hyperlink/Hyperlink.stories.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Inline",
+          "declaration": {
+            "name": "Inline",
+            "module": "src/hyperlink/Hyperlink.stories.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/hyperlink/Hyperlink.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A link control that allows a user to indicate an action to be executed. Typically used for navigational purposes.\n\n```js \nimport '@innofake/omni-components/hyperlink'; \n```",
+          "name": "Hyperlink",
+          "cssProperties": [
+            {
+              "description": "Hyperlink disabled color.",
+              "name": "--omni-hyperlink-color-disabled"
+            },
+            {
+              "description": "Hyperlink font size.",
+              "name": "--omni-hyperlink-font-size"
+            },
+            {
+              "description": "Hyperlink font weight.",
+              "name": "--omni-hyperlink-font-family"
+            },
+            {
+              "description": "Hyperlink font weight.",
+              "name": "--omni-hyperlink-font-weight"
+            },
+            {
+              "description": "Hyperlink color.",
+              "name": "--omni-hyperlink-color"
+            },
+            {
+              "description": "Hyperlink text decorator",
+              "name": "--omni-hyperlink-text-decorator"
+            },
+            {
+              "description": "Hyperlink small font size variation",
+              "name": "--omni-hyperlink-font-size-small"
+            },
+            {
+              "description": "Hyperlink small font family variation",
+              "name": "--omni-font-family-small"
+            },
+            {
+              "description": "Hyperlink small font weight",
+              "name": "--omni-hyperlink-font-weight-small"
+            },
+            {
+              "description": "Hyperlink colour when in an active state.",
+              "name": "--omni-hyperlink-color-active"
+            },
+            {
+              "description": "Hyperlink text decorator in active state.",
+              "name": "--omni-hyperlink-text-decorator-active"
+            },
+            {
+              "description": "Hyperlink text decorator when in hover state.",
+              "name": "--omni-hyperlink-text-decorator-hover"
+            },
+            {
+              "description": "Hyperlink color when visited",
+              "name": "--omni-hyperlink-color-visited"
+            },
+            {
+              "description": "Hyperlink text decorator when visited.",
+              "name": "--omni-hyperlink-text-decorator-visited"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "The label string to display.",
+              "attribute": "label",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "href",
+              "type": {
+                "text": "string"
+              },
+              "description": "URL to link to. NOTE, suppresses \"click\" event if specified.",
+              "attribute": "href",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "target",
+              "type": {
+                "text": "\"_self\"|\"_blank\"|\"_parent\"|\"_top\"|String"
+              },
+              "default": "\"_self\"",
+              "description": "Where to load the URL specified in \"href\": - `_self` Current browsing context. - `_blank` Usually a new tab, users can configure the browser to open a new window instead. - `_parent` Parent browsing context of the current one. If no parent, behave as \"_self\". - `_top` Topmost browsing context (the \"highest\" context thats an ancestor of the current one). If no ancestors, behaves as \"_self\".",
+              "attribute": "target",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Indicator if the link is disabled.",
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "inline",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Indicator if the link is used as part of a sentence.",
+              "attribute": "inline",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "string"
+              },
+              "description": "Size of the Hyperlink text: - `default` Size variation to apply. - `small` Size variation to apply.",
+              "attribute": "size",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "The label string to display.",
+              "fieldName": "label"
+            },
+            {
+              "name": "href",
+              "type": {
+                "text": "string"
+              },
+              "description": "URL to link to. NOTE, suppresses \"click\" event if specified.",
+              "fieldName": "href"
+            },
+            {
+              "name": "target",
+              "type": {
+                "text": "\"_self\"|\"_blank\"|\"_parent\"|\"_top\"|String"
+              },
+              "default": "\"_self\"",
+              "description": "Where to load the URL specified in \"href\": - `_self` Current browsing context. - `_blank` Usually a new tab, users can configure the browser to open a new window instead. - `_parent` Parent browsing context of the current one. If no parent, behave as \"_self\". - `_top` Topmost browsing context (the \"highest\" context thats an ancestor of the current one). If no ancestors, behaves as \"_self\".",
+              "fieldName": "target"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Indicator if the link is disabled.",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "inline",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Indicator if the link is used as part of a sentence.",
+              "fieldName": "inline"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "string"
+              },
+              "description": "Size of the Hyperlink text: - `default` Size variation to apply. - `small` Size variation to apply.",
+              "fieldName": "size"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "omni-hyperlink",
+          "customElement": true
+        },
+        {
+          "kind": "variable",
+          "name": "linkTarget",
+          "type": {
+            "text": "['_self', '_blank', '_parent', '_top']"
+          },
+          "default": "['_self', '_blank', '_parent', '_top']"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Hyperlink",
+          "declaration": {
+            "name": "Hyperlink",
+            "module": "src/hyperlink/Hyperlink.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "omni-hyperlink",
+          "declaration": {
+            "name": "Hyperlink",
+            "module": "src/hyperlink/Hyperlink.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "linkTarget",
+          "declaration": {
+            "name": "linkTarget",
+            "module": "src/hyperlink/Hyperlink.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/hyperlink/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./Hyperlink.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/icon/Icon.stories.ts",
       "declarations": [
         {
