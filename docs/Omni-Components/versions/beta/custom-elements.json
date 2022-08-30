@@ -103,7 +103,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "A control that allows an action to be executed.\n\n```js \nimport '@innofake/omni-components/button'; \n```",
+          "description": "A control that allows an action to be executed.\n\n```js \nimport '@capitec/omni-components/button'; \n```",
           "name": "Button",
           "cssProperties": [
             {
@@ -608,7 +608,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "A control that allows a user to check a value on or off.\n\n```js \nimport '@innofake/omni-components/check'; \n```",
+          "description": "A control that allows a user to check a value on or off.\n\n```js \nimport '@capitec/omni-components/check'; \n```",
           "name": "Check",
           "cssProperties": [
             {
@@ -1022,7 +1022,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "A control to syntax highlight and display source code.\n\n```js \nimport '@innofake/omni-components/code'; \n```",
+          "description": "A control to syntax highlight and display source code.\n\n```js \nimport '@capitec/omni-components/code'; \n```",
           "name": "Code",
           "cssProperties": [
             {
@@ -1342,7 +1342,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "A link control that allows a user to indicate an action to be executed. Typically used for navigational purposes.\n\n```js \nimport '@innofake/omni-components/hyperlink'; \n```",
+          "description": "A link control that allows a user to indicate an action to be executed. Typically used for navigational purposes.\n\n```js \nimport '@capitec/omni-components/hyperlink'; \n```",
           "name": "Hyperlink",
           "cssProperties": [
             {
@@ -1685,7 +1685,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "Component that displays an icon\n\n```js \nimport '@innofake/omni-components/icon'; \n```",
+          "description": "Component that displays an icon\n\n```js \nimport '@capitec/omni-components/icon'; \n```",
           "name": "Icon",
           "cssProperties": [
             {
@@ -1819,7 +1819,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "A check icon component\n\n```js \nimport '@innofake/omni-components/icons/Check.icon.js'; \n```",
+          "description": "A check icon component\n\n```js \nimport '@capitec/omni-components/icons/Check.icon.js'; \n```",
           "name": "CheckIcon",
           "members": [],
           "superclass": {
@@ -1855,7 +1855,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "An indeterminate icon component\n\n```js \nimport '@innofake/omni-components/icons/Indeterminate.icon.js'; \n```",
+          "description": "An indeterminate icon component\n\n```js \nimport '@capitec/omni-components/icons/Indeterminate.icon.js'; \n```",
           "name": "IndeterminateIcon",
           "members": [],
           "superclass": {
@@ -1976,7 +1976,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "A simple label component that renders a styled text string.\n\n```js \nimport '@innofake/omni-components/label'; \n```",
+          "description": "A simple label component that renders a styled text string.\n\n```js \nimport '@capitec/omni-components/label'; \n```",
           "name": "Label",
           "cssProperties": [
             {
@@ -2245,7 +2245,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "A control that allows a user to select a single value from a small group of values.\n\n```js \nimport '@innofake/omni-components/radio'; \n```",
+          "description": "A control that allows a user to select a single value from a small group of values.\n\n```js \nimport '@capitec/omni-components/radio'; \n```",
           "name": "Radio",
           "cssProperties": [
             {
@@ -2576,7 +2576,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "Base class used to create a contextual observable store. \n\nCore concepts and capabilities include:\n- Be default store state is immutable (recommended).\n- Consumers can subscribe to store state changes via exposed RxJS Observables.\n- Store state change history can be captured and accessed (in memory only).\n- Store state changes can be logged to console.\n\n```js \nimport { Store } from '@innofake/omni-components/store'; \n```",
+          "description": "Base class used to create a contextual observable store. \n\nCore concepts and capabilities include:\n- Be default store state is immutable (recommended).\n- Consumers can subscribe to store state changes via exposed RxJS Observables.\n- Store state change history can be captured and accessed (in memory only).\n- Store state changes can be logged to console.\n\n```js \nimport { Store } from '@capitec/omni-components/store'; \n```",
           "name": "Store",
           "members": [
             {
@@ -3128,7 +3128,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "A control that allows a user to switch a value on or off.\n\n```js \nimport '@innofake/omni-components/switch'; \n```",
+          "description": "A control that allows a user to switch a value on or off.\n\n```js \nimport '@capitec/omni-components/switch'; \n```",
           "name": "Switch",
           "cssProperties": [
             {
