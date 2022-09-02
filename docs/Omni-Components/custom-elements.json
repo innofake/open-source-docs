@@ -36,7 +36,7 @@
           "type": {
             "text": "object"
           },
-          "default": "{\n    render: () => html`\n    <omni-button data-testid=\"test-button\">\n      <omni-icon size=\"default\" icon=\"/assets/direction.svg\"></omni-icon>\n    </omni-button>\n  `,\n    name: 'Slot',\n    args: {},\n    play: async (context: StoryContext) => {\n        const button = within(context.canvasElement).getByTestId<Button>('test-button');\n        const slotElement = button.shadowRoot.querySelector('slot');\n        const foundSlottedOmniIconElement = slotElement\n            .assignedElements()\n            .find((e) => e.tagName.toLowerCase() === 'omni-icon');\n        await expect(foundSlottedOmniIconElement).toBeTruthy();\n    },\n}"
+          "default": "{\n    render: () => html`\n    <omni-button data-testid=\"test-button\">\n      <omni-icon size=\"default\" icon=\"assets/direction.svg\"></omni-icon>\n    </omni-button>\n  `,\n    name: 'Slot',\n    args: {},\n    play: async (context: StoryContext) => {\n        const button = within(context.canvasElement).getByTestId<Button>('test-button');\n        const slotElement = button.shadowRoot.querySelector('slot');\n        const foundSlottedOmniIconElement = slotElement\n            .assignedElements()\n            .find((e) => e.tagName.toLowerCase() === 'omni-icon');\n        await expect(foundSlottedOmniIconElement).toBeTruthy();\n    },\n}"
         },
         {
           "kind": "variable",
@@ -1614,7 +1614,7 @@
           "type": {
             "text": "object"
           },
-          "default": "{\n  render: (args: ArgTypes) => html`\n    <!-- Icons loaded by content path instead of font-based or slotted content will not be able to be styled directly -->\n\n    <omni-icon data-testid=\"test-icon\" size=\"${args.size}\" icon=\"${args.icon}\"></omni-icon>\n  `,\n  name: 'Local Source',\n  parameters: {},\n  args: {\n    size: 'default',\n    icon: '/assets/colors.svg',\n  },\n  play: async (context: StoryContext) => {\n      const icon = within(context.canvasElement).getByTestId<Icon>('test-icon');\n      const imgElement = icon.shadowRoot.querySelector('img');\n      await expect(imgElement).toBeTruthy();\n      await expect(imgElement.src.endsWith(IconPath.args.icon)).toBeTruthy();\n  }\n}"
+          "default": "{\n  render: (args: ArgTypes) => html`\n    <!-- Icons loaded by content path instead of font-based or slotted content will not be able to be styled directly -->\n\n    <omni-icon data-testid=\"test-icon\" size=\"${args.size}\" icon=\"${args.icon}\"></omni-icon>\n  `,\n  name: 'Local Source',\n  parameters: {},\n  args: {\n    size: 'default',\n    icon: 'assets/colors.svg',\n  },\n  play: async (context: StoryContext) => {\n      const icon = within(context.canvasElement).getByTestId<Icon>('test-icon');\n      const imgElement = icon.shadowRoot.querySelector('img');\n      await expect(imgElement).toBeTruthy();\n      await expect(imgElement.src.endsWith(IconPath.args.icon)).toBeTruthy();\n  }\n}"
         },
         {
           "kind": "variable",
