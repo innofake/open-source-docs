@@ -12,7 +12,7 @@
           "type": {
             "text": "object"
           },
-          "default": "{\n    render: (args: Args) => html`\n    <omni-button\n        data-testid=\"test-button\"\n        type=\"${args.type}\"\n        label=\"${ifNotEmpty(args.label)}\"\n        slot-position=\"${args.slotPosition}\"\n        ?disabled=${args.disabled}>\n        ${unsafeHTML(args.slot)}\n    </omni-button>\n  `,\n    name: 'Interactive',\n    args: {\n        type: 'secondary',\n        label: 'Button',\n        slotPosition: 'top',\n        disabled: false,\n        slot: raw`<omni-icon icon=\"@material/thumb_up\"></omni-icon>`\n    },\n    play: async (context: StoryContext) => {\n        const button = within(context.canvasElement).getByTestId<Button>('test-button');\n        const click = jest.fn();\n        button.addEventListener('click', () => click());\n        await userEvent.click(button);\n        await userEvent.click(button);\n        await expect(click).toBeCalledTimes(2);\n    },\n}"
+          "default": "{\n    render: (args: Args) => html`\n        <omni-button\n            data-testid=\"test-button\"\n            type=\"${args.type}\"\n            label=\"${ifNotEmpty(args.label)}\"\n            slot-position=\"${args.slotPosition}\"\n            ?disabled=${args.disabled}>\n            ${unsafeHTML(args.slot)}\n        </omni-button>\n    `,\n    name: 'Interactive',\n    args: {\n        type: 'secondary',\n        label: 'Button',\n        slotPosition: 'top',\n        disabled: false,\n        slot: raw`<omni-icon icon=\"@material/thumb_up\"></omni-icon>`\n    },\n    play: async (context: StoryContext) => {\n        const button = within(context.canvasElement).getByTestId<Button>('test-button');\n        const click = jest.fn();\n        button.addEventListener('click', () => click());\n        await userEvent.click(button);\n        await userEvent.click(button);\n        await expect(click).toBeCalledTimes(2);\n    },\n}"
         },
         {
           "kind": "variable",
@@ -20,7 +20,7 @@
           "type": {
             "text": "object"
           },
-          "default": "{\n    render: (args: Args) => html`\n    <omni-button type=\"${args.type}\" label=\"${args.label}\" data-testid=\"test-button\"></omni-button>\n  `,\n    name: 'Type',\n    args: {\n        type: 'primary',\n        label: 'Click',\n    },\n    play: async (context: StoryContext) => {\n        const button = within(context.canvasElement).getByTestId<Button>('test-button');\n        const buttonElement = button.shadowRoot.getElementById('button');\n        const foundPrimaryClass = buttonElement.classList.contains('primary');\n        await expect(foundPrimaryClass).toBeTruthy();\n    },\n}"
+          "default": "{\n    render: (args: Args) => html`\n        <omni-button type=\"${args.type}\" label=\"${args.label}\" data-testid=\"test-button\"></omni-button>\n    `,\n    name: 'Type',\n    args: {\n        type: 'primary',\n        label: 'Click',\n    },\n    play: async (context: StoryContext) => {\n        const button = within(context.canvasElement).getByTestId<Button>('test-button');\n        const buttonElement = button.shadowRoot.getElementById('button');\n        const foundPrimaryClass = buttonElement.classList.contains('primary');\n        await expect(foundPrimaryClass).toBeTruthy();\n    },\n}"
         },
         {
           "kind": "variable",
@@ -28,7 +28,7 @@
           "type": {
             "text": "object"
           },
-          "default": "{\n    render: (args: Args) => html`\n    <omni-button label=\"${args.label}\" data-testid=\"test-button\"></omni-button>\n  `,\n    name: 'Label',\n    args: {\n        label: 'Click',\n    },\n    play: async (context: StoryContext) => {\n        const button = within(context.canvasElement).getByTestId<Button>('test-button');\n        const labelElement = button.shadowRoot.getElementById('label');\n        const labelMatches = labelElement.innerText === Label.args.label;\n        await expect(labelMatches).toBeTruthy();\n    },\n}"
+          "default": "{\n    render: (args: Args) => html`\n        <omni-button label=\"${args.label}\" data-testid=\"test-button\"></omni-button>\n    `,\n    name: 'Label',\n    args: {\n        label: 'Click',\n    },\n    play: async (context: StoryContext) => {\n        const button = within(context.canvasElement).getByTestId<Button>('test-button');\n        const labelElement = button.shadowRoot.getElementById('label');\n        const labelMatches = labelElement.innerText === Label.args.label;\n        await expect(labelMatches).toBeTruthy();\n    },\n}"
         },
         {
           "kind": "variable",
@@ -36,7 +36,7 @@
           "type": {
             "text": "object"
           },
-          "default": "{\n    render: () => html`\n    <omni-button data-testid=\"test-button\">\n      <omni-icon size=\"default\" icon=\"assets/direction.svg\"></omni-icon>\n    </omni-button>\n  `,\n    name: 'Slot',\n    args: {},\n    play: async (context: StoryContext) => {\n        const button = within(context.canvasElement).getByTestId<Button>('test-button');\n        const slotElement = button.shadowRoot.querySelector('slot');\n        const foundSlottedOmniIconElement = slotElement\n            .assignedElements()\n            .find((e) => e.tagName.toLowerCase() === 'omni-icon');\n        await expect(foundSlottedOmniIconElement).toBeTruthy();\n    },\n}"
+          "default": "{\n    render: () => html`\n        <omni-button data-testid=\"test-button\">\n          <omni-icon size=\"default\" icon=\"assets/direction.svg\"></omni-icon>\n        </omni-button>\n    `,\n    name: 'Slot',\n    args: {},\n    play: async (context: StoryContext) => {\n        const button = within(context.canvasElement).getByTestId<Button>('test-button');\n        const slotElement = button.shadowRoot.querySelector('slot');\n        const foundSlottedOmniIconElement = slotElement\n            .assignedElements()\n            .find((e) => e.tagName.toLowerCase() === 'omni-icon');\n        await expect(foundSlottedOmniIconElement).toBeTruthy();\n    },\n}"
         },
         {
           "kind": "variable",
@@ -44,7 +44,7 @@
           "type": {
             "text": "object"
           },
-          "default": "{\n    render: (args: Args) => html`\n    <omni-button disabled label=\"${args.label}\" data-testid=\"test-button\"></omni-button>\n  `,\n    name: 'Disabled',\n    args: {\n        label: 'Disabled',\n    },\n    play: async (context: StoryContext) => {\n        const button = within(context.canvasElement).getByTestId<Button>('test-button'); // Test for disabled CSS.\n\n        const buttonElement = button.shadowRoot.getElementById('button');\n        const foundDisabledClass = buttonElement.classList.contains('disabled');\n        await expect(foundDisabledClass).toBeTruthy(); // Test for not clickable.\n\n        const click = jest.fn();\n        button.addEventListener('click', () => click());\n        await userEvent.click(button);\n        await userEvent.click(button);\n        await expect(click).toBeCalledTimes(0);\n    },\n}"
+          "default": "{\n    render: (args: Args) => html`\n        <omni-button disabled label=\"${args.label}\" data-testid=\"test-button\"></omni-button>\n    `,\n    name: 'Disabled',\n    args: {\n        label: 'Disabled',\n    },\n    play: async (context: StoryContext) => {\n        const button = within(context.canvasElement).getByTestId<Button>('test-button'); // Test for disabled CSS.\n\n        const buttonElement = button.shadowRoot.getElementById('button');\n        const foundDisabledClass = buttonElement.classList.contains('disabled');\n        await expect(foundDisabledClass).toBeTruthy(); // Test for not clickable.\n\n        const click = jest.fn();\n        button.addEventListener('click', () => click());\n        await userEvent.click(button);\n        await userEvent.click(button);\n        await expect(click).toBeCalledTimes(0);\n    },\n}"
         }
       ],
       "exports": [
@@ -711,7 +711,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "The label text.",
+              "description": "Text label.",
               "attribute": "label",
               "reflects": true
             },
@@ -719,7 +719,7 @@
               "kind": "field",
               "name": "data",
               "type": {
-                "text": "Object"
+                "text": "object"
               },
               "description": "Data associated with the component.",
               "attribute": "data",
@@ -751,7 +751,6 @@
               "type": {
                 "text": "boolean"
               },
-              "default": "false",
               "description": "Indicator if the component is checked or not.",
               "attribute": "checked",
               "reflects": true
@@ -762,7 +761,6 @@
               "type": {
                 "text": "boolean"
               },
-              "default": "false",
               "description": "Indicator if the component is disabled.",
               "attribute": "disabled",
               "reflects": true
@@ -773,7 +771,6 @@
               "type": {
                 "text": "boolean"
               },
-              "default": "false",
               "description": "Indicator if the component is in and indeterminate state.",
               "attribute": "indeterminate",
               "reflects": true
@@ -784,12 +781,6 @@
             }
           ],
           "events": [
-            {
-              "name": "value-changed",
-              "type": {
-                "text": "CustomEvent"
-              }
-            },
             {
               "name": "value-change",
               "type": {
@@ -804,16 +795,18 @@
               "type": {
                 "text": "string"
               },
-              "description": "The label text.",
-              "fieldName": "label"
+              "description": "Text label.",
+              "fieldName": "label",
+              "attribute": "label"
             },
             {
               "name": "data",
               "type": {
-                "text": "Object"
+                "text": "object"
               },
               "description": "Data associated with the component.",
-              "fieldName": "data"
+              "fieldName": "data",
+              "attribute": "data"
             },
             {
               "name": "hint",
@@ -821,7 +814,8 @@
                 "text": "string"
               },
               "description": "A hint message to assist the user.",
-              "fieldName": "hint"
+              "fieldName": "hint",
+              "attribute": "hint"
             },
             {
               "name": "error",
@@ -829,34 +823,35 @@
                 "text": "string"
               },
               "description": "An error message to guide users to correct a mistake.",
-              "fieldName": "error"
+              "fieldName": "error",
+              "attribute": "error"
             },
             {
               "name": "checked",
               "type": {
                 "text": "boolean"
               },
-              "default": "false",
               "description": "Indicator if the component is checked or not.",
-              "fieldName": "checked"
+              "fieldName": "checked",
+              "attribute": "checked"
             },
             {
               "name": "disabled",
               "type": {
                 "text": "boolean"
               },
-              "default": "false",
               "description": "Indicator if the component is disabled.",
-              "fieldName": "disabled"
+              "fieldName": "disabled",
+              "attribute": "disabled"
             },
             {
               "name": "indeterminate",
               "type": {
                 "text": "boolean"
               },
-              "default": "false",
               "description": "Indicator if the component is in and indeterminate state.",
-              "fieldName": "indeterminate"
+              "fieldName": "indeterminate",
+              "attribute": "indeterminate"
             }
           ],
           "superclass": {
@@ -903,6 +898,337 @@
           "declaration": {
             "name": "*",
             "package": "./Check.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/chip/Chip.stories.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "Interactive",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n    render: (args: Args) => html`\n        <omni-chip\n            data-testid=\"test-chip\"\n            label=\"${ifNotEmpty(args.label)}\"\n            ?closable=${args.closable}\n            ?disabled=\"${args.disabled}\"\n            >${(args.chip_icon ? html`${'\\r\\n'}${unsafeHTML(assignToSlot('chip_icon', args.chip_icon))}` : nothing)}${(args.close_icon ? html`${'\\r\\n'}${unsafeHTML(assignToSlot('close_icon', args.close_icon))}` : nothing)}\n        </omni-chip>\n    `,\n    name: 'Interactive',\n    args: {\n        label: 'Chip',\n        closable: true,\n        disabled: false,\n        chip_icon: raw`<svg slot=\"chip_icon\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"100%\" height=\"100%\"><path d=\"M12 2.25c5.385 0 9.75 4.365 9.75 9.75s-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12 6.615 2.25 12 2.25Zm0 1.5a8.25 8.25 0 1 0 0 16.5 8.25 8.25 0 0 0 0-16.5ZM12 7a.75.75 0 0 1 .75.75v3.5h3.5a.75.75 0 0 1 .743.648L17 12a.75.75 0 0 1-.75.75h-3.5v3.5a.75.75 0 0 1-.648.743L12 17a.75.75 0 0 1-.75-.75v-3.5h-3.5a.75.75 0 0 1-.743-.648L7 12a.75.75 0 0 1 .75-.75h3.5v-3.5a.75.75 0 0 1 .648-.743Z\"/></svg>`,\n        close_icon: '',\n    },\n    play: async (context: StoryContext) => {\n        const chip = within(context.canvasElement).getByTestId<Chip>('test-chip');\n        const click = jest.fn();\n\n        chip.addEventListener('click', click);\n        await userEvent.click(chip);\n        await userEvent.click(chip);\n\n        await expect(click).toBeCalledTimes(2);\n  \n    }\n}"
+        },
+        {
+          "kind": "variable",
+          "name": "Label",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n    render: (args: Args) => html`\n        <omni-chip\n            data-testid=\"test-chip\"\n            label=\"${ifNotEmpty(args.label)}\">\n        </omni-chip>\n    `,\n    name: 'Label',\n    args: {\n        label: 'Label'\n    },\n    play: async (context: StoryContext) => {\n        const chip = within(context.canvasElement).getByTestId<Chip>('test-chip');\n        await expect(chip.shadowRoot.getElementById('label')).toHaveTextContent(Label.args.label);\n    }\n}"
+        },
+        {
+          "kind": "variable",
+          "name": "Closable",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n    render: (args: Args) => html`\n        <omni-chip\n            data-testid=\"test-chip\"\n            label=\"${ifNotEmpty(args.label)}\"\n            ?closable=${args.closable}>\n        </omni-chip>\n    `,\n    name: 'Closable',\n    args: {\n        label: 'Closable',\n        closable: true\n    },\n    play: async (context: StoryContext) => {\n        const chip = within(context.canvasElement).getByTestId<Chip>('test-chip');\n        const remove = jest.fn();\n        chip.addEventListener('remove', remove);\n\n        const closeButton = chip.shadowRoot.getElementById('closeButton');\n\n        await userEvent.click(closeButton);\n        await userEvent.click(closeButton);\n        await expect(remove).toBeCalledTimes(2);\n  \n    }\n}"
+        },
+        {
+          "kind": "variable",
+          "name": "Disabled",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n    render: (args: Args) => html`\n        <omni-chip\n            data-testid=\"test-chip\"\n            label=\"${ifNotEmpty(args.label)}\"\n            ?disabled=\"${args.disabled}\">\n        </omni-chip>\n    `,\n    name: 'Disabled',\n    args: {\n        label: 'Disabled',\n        disabled: true\n    },\n    play: async (context: StoryContext) => {\n\n        const chip = within(context.canvasElement).getByTestId<Chip>('test-chip');\n        const chipElement = chip.shadowRoot.getElementById('chip');\n        const foundDisabledClass = chipElement.classList.contains('disabled');\n        await expect(foundDisabledClass).toBeTruthy(); // Test for not clickable.\n\n        const click = jest.fn();\n        chip.addEventListener('click', click);\n        await userEvent.click(chip);\n        await userEvent.click(chip);\n\n        await expect(click).toBeCalledTimes(0);\n  \n    }\n}"
+        },
+        {
+          "kind": "variable",
+          "name": "ChipSlotIcon",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n    render: (args: Args) => html`\n        <omni-chip\n            data-testid=\"test-chip\"\n            label=\"${ifNotEmpty(args.label)}\"\n            ?closable=${args.closable}>\n            ${unsafeHTML(args.chip_icon)} \n        </omni-chip>\n    `,\n    name: 'Chip Icon',\n    args: {\n        label: 'Chip',\n        closable: false,\n        chip_icon: raw`<svg slot=\"chip_icon\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"100%\" height=\"100%\"><path d=\"M12 2.25c5.385 0 9.75 4.365 9.75 9.75s-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12 6.615 2.25 12 2.25Zm0 1.5a8.25 8.25 0 1 0 0 16.5 8.25 8.25 0 0 0 0-16.5ZM12 7a.75.75 0 0 1 .75.75v3.5h3.5a.75.75 0 0 1 .743.648L17 12a.75.75 0 0 1-.75.75h-3.5v3.5a.75.75 0 0 1-.648.743L12 17a.75.75 0 0 1-.75-.75v-3.5h-3.5a.75.75 0 0 1-.743-.648L7 12a.75.75 0 0 1 .75-.75h3.5v-3.5a.75.75 0 0 1 .648-.743Z\"/></svg>`\n    },\n    play: async (context: StoryContext) => {\n        const chip = within(context.canvasElement).getByTestId<Chip>('test-chip');\n        const slotElement = chip.shadowRoot.querySelector<HTMLSlotElement>('slot[name=\"chip_icon\"]');\n        await expect(slotElement).toBeTruthy();\n\n        const foundSlottedSvgElement = slotElement.assignedElements().find((e) => e.tagName.toLowerCase() === 'svg');\n        await expect(foundSlottedSvgElement).toBeTruthy();\n  \n    }\n}"
+        },
+        {
+          "kind": "variable",
+          "name": "CustomCloseIcon",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n    render: (args: Args) => html`\n        <omni-chip\n            data-testid=\"test-chip\"\n            label=\"${ifNotEmpty(args.label)}\"\n            ?closable=${args.closable}>\n            ${unsafeHTML(args.chip_icon)} \n            ${unsafeHTML(args.close_icon)} \n        </omni-chip>\n    `,\n    name: 'Custom Close Icon',\n    args: {\n        label: 'Close',\n        closable: true,\n        close_icon: raw`<svg slot=\"close_icon\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"100%\" height=\"100%\"><path d=\"m7.446 6.397.084.073L13 11.939l5.47-5.47a.75.75 0 0 1 1.133.977l-.073.084L14.061 13l5.47 5.47a.75.75 0 0 1-.977 1.133l-.084-.073L13 14.061l-5.47 5.47a.75.75 0 0 1-1.133-.977l.073-.084L11.939 13l-5.47-5.47a.75.75 0 0 1 .977-1.133Z\"/></svg>`\n    },\n    play: async (context: StoryContext) => {\n        const chip = within(context.canvasElement).getByTestId<Chip>('test-chip');\n        const slotElement = chip.shadowRoot.querySelector<HTMLSlotElement>('slot[name=close_icon]');\n        await expect(slotElement).toBeTruthy();\n\n        const foundSlottedSvgElement = slotElement.assignedElements().find((e) => e.tagName.toLocaleLowerCase() === 'svg');\n        await expect(foundSlottedSvgElement).toBeTruthy();\n    }\n}"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "module": "src/chip/Chip.stories.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Interactive",
+          "declaration": {
+            "name": "Interactive",
+            "module": "src/chip/Chip.stories.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Label",
+          "declaration": {
+            "name": "Label",
+            "module": "src/chip/Chip.stories.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Closable",
+          "declaration": {
+            "name": "Closable",
+            "module": "src/chip/Chip.stories.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Disabled",
+          "declaration": {
+            "name": "Disabled",
+            "module": "src/chip/Chip.stories.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ChipSlotIcon",
+          "declaration": {
+            "name": "ChipSlotIcon",
+            "module": "src/chip/Chip.stories.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "CustomCloseIcon",
+          "declaration": {
+            "name": "CustomCloseIcon",
+            "module": "src/chip/Chip.stories.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/chip/Chip.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A control that can be used for input, setting attributes, or performing actions.\n\n```js \nimport '@capitec/omni-components/chip'; \n```",
+          "name": "Chip",
+          "cssProperties": [
+            {
+              "description": "Component height.",
+              "name": "--omni-chip-height"
+            },
+            {
+              "description": "Component maximum height.",
+              "name": "--omni-chip-max-height"
+            },
+            {
+              "description": "Component border radius.",
+              "name": "--omni-chip-border-radius"
+            },
+            {
+              "description": "Component background color.",
+              "name": "--omni-chip-background-color"
+            },
+            {
+              "description": "Component padding.",
+              "name": "--omni-chip-padding"
+            },
+            {
+              "description": "Component label left padding.",
+              "name": "--omni-chip-label-padding-left"
+            },
+            {
+              "description": "Component label right padding.",
+              "name": "--omni-chip-label-padding-right"
+            },
+            {
+              "description": "Component label color.",
+              "name": "--omni-chip-label-color"
+            },
+            {
+              "description": "Component label font family.",
+              "name": "--omni-chip-label-font-family"
+            },
+            {
+              "description": "Component label font size.",
+              "name": "--omni-chip-label-font-size"
+            },
+            {
+              "description": "Component label font weight.",
+              "name": "--omni-chip-label-font-weight"
+            },
+            {
+              "description": "Component label line height.",
+              "name": "--omni-chip-label-line-height"
+            },
+            {
+              "description": "Component disabled border color.",
+              "name": "--omni-chip-disabled-border-color"
+            },
+            {
+              "description": "Component disabled background color.",
+              "name": "--omni-chip-disabled-background-color"
+            },
+            {
+              "description": "Component icon left padding.",
+              "name": "--omni-chip-disabled-hover-background-color"
+            },
+            {
+              "description": "Component close icon left padding.",
+              "name": "--omni-chip-icon-padding-left"
+            },
+            {
+              "description": "Component close icon height.",
+              "name": "--omni-chip-icon-height"
+            },
+            {
+              "description": "Component close icon width.",
+              "name": "--omni-chip-icon-width"
+            },
+            {
+              "description": "Component close icon color.",
+              "name": "--omni-chip-icon-color"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Replaces the icon for the chip slot",
+              "name": "chip_icon"
+            },
+            {
+              "description": "Replaces the icon for the closed slot",
+              "name": "close_icon"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Text label.",
+              "attribute": "label",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "closable",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Sets if the chip has a close button.",
+              "attribute": "closable",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Indicator if the component is disabled.",
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "_removeClicked",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "MouseEvent"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "remove",
+              "type": {
+                "text": "CustomEvent<{}>"
+              },
+              "description": "Dispatched when the close icon is clicked."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Text label.",
+              "fieldName": "label",
+              "attribute": "label"
+            },
+            {
+              "name": "closable",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Sets if the chip has a close button.",
+              "fieldName": "closable",
+              "attribute": "closable"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Indicator if the component is disabled.",
+              "fieldName": "disabled",
+              "attribute": "disabled"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "omni-chip",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Chip",
+          "declaration": {
+            "name": "Chip",
+            "module": "src/chip/Chip.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "omni-chip",
+          "declaration": {
+            "name": "Chip",
+            "module": "src/chip/Chip.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/chip/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./Chip.js"
           }
         }
       ]
@@ -1049,7 +1375,7 @@
               "kind": "field",
               "name": "header",
               "type": {
-                "text": "String"
+                "text": "string"
               },
               "description": "Renders a small header above the block itself.",
               "attribute": "header",
@@ -1059,9 +1385,8 @@
               "kind": "field",
               "name": "language",
               "type": {
-                "text": "String"
+                "text": "string"
               },
-              "default": "'html'",
               "description": "Programming language used, e.g. html, css, javascript, etc.",
               "attribute": "language",
               "reflects": true
@@ -1079,7 +1404,7 @@
               "kind": "field",
               "name": "content",
               "type": {
-                "text": "String"
+                "text": "string"
               },
               "description": "Raw text to parse as content. If this property is specified, it will take precedence over slotted content. This should also be used if you are using dynamic content",
               "attribute": "content",
@@ -1128,27 +1453,29 @@
             {
               "name": "header",
               "type": {
-                "text": "String"
+                "text": "string"
               },
               "description": "Renders a small header above the block itself.",
-              "fieldName": "header"
+              "fieldName": "header",
+              "attribute": "header"
             },
             {
               "name": "language",
               "type": {
-                "text": "String"
+                "text": "string"
               },
-              "default": "'html'",
               "description": "Programming language used, e.g. html, css, javascript, etc.",
-              "fieldName": "language"
+              "fieldName": "language",
+              "attribute": "language"
             },
             {
               "name": "content",
               "type": {
-                "text": "String"
+                "text": "string"
               },
               "description": "Raw text to parse as content. If this property is specified, it will take precedence over slotted content. This should also be used if you are using dynamic content",
-              "fieldName": "content"
+              "fieldName": "content",
+              "attribute": "content"
             }
           ],
           "superclass": {
@@ -1356,7 +1683,7 @@
               "name": "--omni-hyperlink-font-weight-small"
             },
             {
-              "description": "Hyperlink colour when in an active state.",
+              "description": "Hyperlink color when in an active state.",
               "name": "--omni-hyperlink-color-active"
             },
             {
@@ -1383,7 +1710,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "The label string to display.",
+              "description": "Text label.",
               "attribute": "label",
               "reflects": true
             },
@@ -1393,7 +1720,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "URL to link to. NOTE, suppresses \"click\" event if specified.",
+              "description": "URL to link to.",
               "attribute": "href",
               "reflects": true
             },
@@ -1401,10 +1728,10 @@
               "kind": "field",
               "name": "target",
               "type": {
-                "text": "\"_self\"|\"_blank\"|\"_parent\"|\"_top\"|String"
+                "text": "'_self' | '_blank' | '_parent' | '_top'"
               },
-              "default": "\"_self\"",
-              "description": "Where to load the URL specified in \"href\": - `_self` Current browsing context. - `_blank` Usually a new tab, users can configure the browser to open a new window instead. - `_parent` Parent browsing context of the current one. If no parent, behave as \"_self\". - `_top` Topmost browsing context (the \"highest\" context thats an ancestor of the current one). If no ancestors, behaves as \"_self\".",
+              "default": "'_self'",
+              "description": "Where to load the URL specified in \"href\"",
               "attribute": "target",
               "reflects": true
             },
@@ -1414,8 +1741,7 @@
               "type": {
                 "text": "boolean"
               },
-              "default": "false",
-              "description": "Indicator if the link is disabled.",
+              "description": "Indicator if the component is disabled.",
               "attribute": "disabled",
               "reflects": true
             },
@@ -1425,7 +1751,6 @@
               "type": {
                 "text": "boolean"
               },
-              "default": "false",
               "description": "Indicator if the link is used as part of a sentence.",
               "attribute": "inline",
               "reflects": true
@@ -1436,7 +1761,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Size of the Hyperlink text: - `default` Size variation to apply. - `small` Size variation to apply.",
+              "description": "Size of the Hyperlink text.",
               "attribute": "size",
               "reflects": true
             }
@@ -1447,51 +1772,55 @@
               "type": {
                 "text": "string"
               },
-              "description": "The label string to display.",
-              "fieldName": "label"
+              "description": "Text label.",
+              "fieldName": "label",
+              "attribute": "label"
             },
             {
               "name": "href",
               "type": {
                 "text": "string"
               },
-              "description": "URL to link to. NOTE, suppresses \"click\" event if specified.",
-              "fieldName": "href"
+              "description": "URL to link to.",
+              "fieldName": "href",
+              "attribute": "href"
             },
             {
               "name": "target",
               "type": {
-                "text": "\"_self\"|\"_blank\"|\"_parent\"|\"_top\"|String"
+                "text": "'_self' | '_blank' | '_parent' | '_top'"
               },
-              "default": "\"_self\"",
-              "description": "Where to load the URL specified in \"href\": - `_self` Current browsing context. - `_blank` Usually a new tab, users can configure the browser to open a new window instead. - `_parent` Parent browsing context of the current one. If no parent, behave as \"_self\". - `_top` Topmost browsing context (the \"highest\" context thats an ancestor of the current one). If no ancestors, behaves as \"_self\".",
-              "fieldName": "target"
+              "default": "'_self'",
+              "description": "Where to load the URL specified in \"href\"",
+              "fieldName": "target",
+              "attribute": "target"
             },
             {
               "name": "disabled",
               "type": {
                 "text": "boolean"
               },
-              "default": "false",
-              "description": "Indicator if the link is disabled.",
-              "fieldName": "disabled"
+              "description": "Indicator if the component is disabled.",
+              "fieldName": "disabled",
+              "attribute": "disabled"
             },
             {
               "name": "inline",
               "type": {
                 "text": "boolean"
               },
-              "default": "false",
               "description": "Indicator if the link is used as part of a sentence.",
-              "fieldName": "inline"
+              "fieldName": "inline",
+              "attribute": "inline"
             },
             {
               "name": "size",
               "type": {
                 "text": "string"
               },
-              "description": "Size of the Hyperlink text: - `default` Size variation to apply. - `small` Size variation to apply.",
-              "fieldName": "size"
+              "description": "Size of the Hyperlink text.",
+              "fieldName": "size",
+              "attribute": "size"
             }
           ],
           "superclass": {
@@ -1500,14 +1829,6 @@
           },
           "tagName": "omni-hyperlink",
           "customElement": true
-        },
-        {
-          "kind": "variable",
-          "name": "linkTarget",
-          "type": {
-            "text": "['_self', '_blank', '_parent', '_top']"
-          },
-          "default": "['_self', '_blank', '_parent', '_top']"
         }
       ],
       "exports": [
@@ -1524,14 +1845,6 @@
           "name": "omni-hyperlink",
           "declaration": {
             "name": "Hyperlink",
-            "module": "src/hyperlink/Hyperlink.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "linkTarget",
-          "declaration": {
-            "name": "linkTarget",
             "module": "src/hyperlink/Hyperlink.ts"
           }
         }
@@ -1702,10 +2015,10 @@
               "kind": "field",
               "name": "size",
               "type": {
-                "text": "\"default\"|\"extra-small\"|\"small\"|\"medium\"|\"large\"|string"
+                "text": "'default' | 'extra-small' | 'small' | 'medium' | 'large'"
               },
-              "default": "\"default\"",
-              "description": "The size to display the icon at. Options include: - `default` Icon size is 24px. - `extra-small` Icon size is 8px. - `small` Icon size is 16px. - `medium` Icon size is 32px. - `large` Icon size is 48px.",
+              "default": "'default'",
+              "description": "The size to display the icon at",
               "attribute": "size",
               "reflects": true
             },
@@ -1715,7 +2028,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "The name of the icon to display. Takes preference over the slotted icon",
+              "description": "The name of the icon to display. Takes preference over the slotted icon.",
               "attribute": "icon",
               "reflects": true
             }
@@ -1724,19 +2037,21 @@
             {
               "name": "size",
               "type": {
-                "text": "\"default\"|\"extra-small\"|\"small\"|\"medium\"|\"large\"|string"
+                "text": "'default' | 'extra-small' | 'small' | 'medium' | 'large'"
               },
-              "default": "\"default\"",
-              "description": "The size to display the icon at. Options include: - `default` Icon size is 24px. - `extra-small` Icon size is 8px. - `small` Icon size is 16px. - `medium` Icon size is 32px. - `large` Icon size is 48px.",
-              "fieldName": "size"
+              "default": "'default'",
+              "description": "The size to display the icon at",
+              "fieldName": "size",
+              "attribute": "size"
             },
             {
               "name": "icon",
               "type": {
                 "text": "string"
               },
-              "description": "The name of the icon to display. Takes preference over the slotted icon",
-              "fieldName": "icon"
+              "description": "The name of the icon to display. Takes preference over the slotted icon.",
+              "fieldName": "icon",
+              "attribute": "icon"
             }
           ],
           "superclass": {
@@ -1819,6 +2134,42 @@
           "declaration": {
             "name": "CheckIcon",
             "module": "src/icons/Check.icon.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/icons/Close.icon.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A Close icon component\n\n```js \nimport '@innofake/omni-components/icons/Close.icon.js'; \n```",
+          "name": "CloseIcon",
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "omni-close-icon",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "CloseIcon",
+          "declaration": {
+            "name": "CloseIcon",
+            "module": "src/icons/Close.icon.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "omni-close-icon",
+          "declaration": {
+            "name": "CloseIcon",
+            "module": "src/icons/Close.icon.ts"
           }
         }
       ]
@@ -2013,7 +2364,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "The label string to display.",
+              "description": "Text label.",
               "attribute": "label",
               "reflects": true
             },
@@ -2021,10 +2372,10 @@
               "kind": "field",
               "name": "type",
               "type": {
-                "text": "\"default\"|\"title\"|\"subtitle\"|\"strong\"|string"
+                "text": "'default' | 'title' | 'subtitle' | 'strong'"
               },
-              "description": "The type of label to display: - `default` Normal font weight. - `title` Larger font and weight. - `subtitle` Larger font and weight. - `strong` Largest font and weight.",
-              "default": "\"default\"",
+              "default": "'default'",
+              "description": "The type of label to display.",
               "attribute": "type",
               "reflects": true
             }
@@ -2035,17 +2386,19 @@
               "type": {
                 "text": "string"
               },
-              "description": "The label string to display.",
-              "fieldName": "label"
+              "description": "Text label.",
+              "fieldName": "label",
+              "attribute": "label"
             },
             {
               "name": "type",
               "type": {
-                "text": "\"default\"|\"title\"|\"subtitle\"|\"strong\"|string"
+                "text": "'default' | 'title' | 'subtitle' | 'strong'"
               },
-              "description": "The type of label to display: - `default` Normal font weight. - `title` Larger font and weight. - `subtitle` Larger font and weight. - `strong` Largest font and weight.",
-              "default": "\"default\"",
-              "fieldName": "type"
+              "default": "'default'",
+              "description": "The type of label to display.",
+              "fieldName": "type",
+              "attribute": "type"
             }
           ],
           "superclass": {
@@ -2354,7 +2707,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "The radio label text.",
+              "description": "Text label.",
               "attribute": "label",
               "reflects": true
             },
@@ -2362,7 +2715,7 @@
               "kind": "field",
               "name": "data",
               "type": {
-                "text": "Object"
+                "text": "object"
               },
               "description": "Data associated with the component.",
               "attribute": "data",
@@ -2394,7 +2747,6 @@
               "type": {
                 "text": "boolean"
               },
-              "default": "false",
               "description": "Indicator if the component is checked or not.",
               "attribute": "checked",
               "reflects": true
@@ -2405,7 +2757,6 @@
               "type": {
                 "text": "boolean"
               },
-              "default": "false",
               "description": "Indicator if the component is disabled.",
               "attribute": "disabled",
               "reflects": true
@@ -2430,16 +2781,18 @@
               "type": {
                 "text": "string"
               },
-              "description": "The radio label text.",
-              "fieldName": "label"
+              "description": "Text label.",
+              "fieldName": "label",
+              "attribute": "label"
             },
             {
               "name": "data",
               "type": {
-                "text": "Object"
+                "text": "object"
               },
               "description": "Data associated with the component.",
-              "fieldName": "data"
+              "fieldName": "data",
+              "attribute": "data"
             },
             {
               "name": "hint",
@@ -2447,7 +2800,8 @@
                 "text": "string"
               },
               "description": "A hint message to assist the user.",
-              "fieldName": "hint"
+              "fieldName": "hint",
+              "attribute": "hint"
             },
             {
               "name": "error",
@@ -2455,25 +2809,26 @@
                 "text": "string"
               },
               "description": "An error message to guide users to correct a mistake.",
-              "fieldName": "error"
+              "fieldName": "error",
+              "attribute": "error"
             },
             {
               "name": "checked",
               "type": {
                 "text": "boolean"
               },
-              "default": "false",
               "description": "Indicator if the component is checked or not.",
-              "fieldName": "checked"
+              "fieldName": "checked",
+              "attribute": "checked"
             },
             {
               "name": "disabled",
               "type": {
                 "text": "boolean"
               },
-              "default": "false",
               "description": "Indicator if the component is disabled.",
-              "fieldName": "disabled"
+              "fieldName": "disabled",
+              "attribute": "disabled"
             }
           ],
           "superclass": {
@@ -3229,7 +3584,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "The switch label text.",
+              "description": "Text label.",
               "attribute": "label",
               "reflects": true
             },
@@ -3237,7 +3592,7 @@
               "kind": "field",
               "name": "data",
               "type": {
-                "text": "Object"
+                "text": "object"
               },
               "description": "Data associated with the component.",
               "attribute": "data",
@@ -3269,7 +3624,6 @@
               "type": {
                 "text": "boolean"
               },
-              "default": "false",
               "description": "Indicator if the component is checked or not.",
               "attribute": "checked",
               "reflects": true
@@ -3280,7 +3634,6 @@
               "type": {
                 "text": "boolean"
               },
-              "default": "false",
               "description": "Indicator if the component is disabled.",
               "attribute": "disabled",
               "reflects": true
@@ -3297,13 +3650,6 @@
                 "text": "CustomEvent<{ old: Boolean; new: Boolean; }>"
               },
               "description": "Dispatched when the switch checked state is changed."
-            },
-            {
-              "type": {
-                "text": "CustomEvent<{ old: Boolean; new: Boolean; }>"
-              },
-              "description": "Dispatched when the switch checked state is changed.",
-              "name": "value-changed"
             }
           ],
           "attributes": [
@@ -3312,16 +3658,18 @@
               "type": {
                 "text": "string"
               },
-              "description": "The switch label text.",
-              "fieldName": "label"
+              "description": "Text label.",
+              "fieldName": "label",
+              "attribute": "label"
             },
             {
               "name": "data",
               "type": {
-                "text": "Object"
+                "text": "object"
               },
               "description": "Data associated with the component.",
-              "fieldName": "data"
+              "fieldName": "data",
+              "attribute": "data"
             },
             {
               "name": "hint",
@@ -3329,7 +3677,8 @@
                 "text": "string"
               },
               "description": "A hint message to assist the user.",
-              "fieldName": "hint"
+              "fieldName": "hint",
+              "attribute": "hint"
             },
             {
               "name": "error",
@@ -3337,25 +3686,26 @@
                 "text": "string"
               },
               "description": "An error message to guide users to correct a mistake.",
-              "fieldName": "error"
+              "fieldName": "error",
+              "attribute": "error"
             },
             {
               "name": "checked",
               "type": {
                 "text": "boolean"
               },
-              "default": "false",
               "description": "Indicator if the component is checked or not.",
-              "fieldName": "checked"
+              "fieldName": "checked",
+              "attribute": "checked"
             },
             {
               "name": "disabled",
               "type": {
                 "text": "boolean"
               },
-              "default": "false",
               "description": "Indicator if the component is disabled.",
-              "fieldName": "disabled"
+              "fieldName": "disabled",
+              "attribute": "disabled"
             }
           ],
           "superclass": {
