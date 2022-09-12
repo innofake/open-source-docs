@@ -1220,6 +1220,12 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/chip/README.md",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/chip/index.ts",
       "declarations": [],
       "exports": [
@@ -4056,6 +4062,18 @@
         },
         {
           "kind": "function",
+          "name": "loadFileRemote",
+          "parameters": [
+            {
+              "name": "src",
+              "type": {
+                "text": "string"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "function",
           "name": "loadThemesListRemote"
         },
         {
@@ -4197,6 +4215,14 @@
           "name": "loadThemeVariablesRemote",
           "declaration": {
             "name": "loadThemeVariablesRemote",
+            "module": "src/utils/StoryUtils.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "loadFileRemote",
+          "declaration": {
+            "name": "loadFileRemote",
             "module": "src/utils/StoryUtils.ts"
           }
         },
