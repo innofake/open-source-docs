@@ -1,20 +1,5 @@
-
-function goHome() {
-    var url = new URL(window.location.href);
-    headerLabel.textContent = `Innofake: Open Source Docs`;
-    window.document.title = `Innofake: Open Source Docs`;
-    var newUrl = url.href.replace(url.search, ``);
-    history.pushState({ url: newUrl }, ``, newUrl);
-    load(false, newUrl);
-};
-
-function goFullscreen() {
-    if (!iframe || !iframe.parentElement || !iframe.contentWindow || !iframe.contentWindow.location) {
-        console.warn(`Attempted to go fullscreen with no iframe`);
-    } else {
-        window.location.href = iframe.contentWindow.location.href;
-    }
-}
+const prefix = 'Innofake:'
+const title = `${prefix} Open Source Documentation`;
 
 window.addEventListener(`popstate`, evt => {
     if (intervalId) {
@@ -43,8 +28,10 @@ var headerLabel = document.getElementById("header-label");
 var select = document.getElementById("version-select");
 var fullscreen = document.getElementById("btn-fullscreen");
 
-home.addEventListener(`click`, goHome);
-fullscreen.addEventListener(`click`, goFullscreen);
+var url = new URL(window.location.href);
+var newUrl = url.href.replace(url.search, ``);
+home.href = newUrl;
+
 
 async function load(pushState = true, loadUrl = undefined) {
 
@@ -94,8 +81,8 @@ async function load(pushState = true, loadUrl = undefined) {
         var url = new URL(window.location.href);
         url.searchParams.set(`repo`, repo);
 
-        headerLabel.textContent = `Innofake: ${repo}`
-        window.document.title = `Innofake: ${repo}`
+        headerLabel.textContent = `${prefix} ${repo}`
+        window.document.title = `${prefix} ${repo}`
 
         var tree = document.createDocumentFragment();
 
@@ -121,13 +108,16 @@ async function load(pushState = true, loadUrl = undefined) {
         var searchPath = url.searchParams.get(`path`);
         if (searchPath) {
             iframe.setAttribute("src", `${baseRef}${src}${searchPath}`);
+            fullscreen.href = `${baseRef}${src}${searchPath}`;
         } else {
             iframe.setAttribute("src", `${baseRef}${src}`);
+            fullscreen.href = `${baseRef}${src}`;
         }
         intervalId = setInterval(() => {
             try {
                 if (!iframe || !iframe.parentElement || !iframe.contentWindow || !iframe.contentWindow.location) {
                     clearInterval(intervalId);
+                    return;
                 } else if (iframe.contentWindow.location.search) {
                     const search = iframe.contentWindow.location.search;
                     if (search) {
@@ -142,6 +132,9 @@ async function load(pushState = true, loadUrl = undefined) {
                             }
                         }
                     }
+                }
+                if (iframe.contentWindow.location.href) {
+                    fullscreen.href = iframe.contentWindow.location.href;
                 }
             } catch (error) {
                 console.error(error);
@@ -211,8 +204,8 @@ async function load(pushState = true, loadUrl = undefined) {
             return;
         }
     }
-    headerLabel.textContent = `Innofake: Open Source Docs`;
-    window.document.title = `Innofake: Open Source Docs`;
+    headerLabel.textContent = title;
+    window.document.title = title;
     select.setAttribute(`class`, `hidden`);
     fullscreen.classList.add(`hidden`);
     

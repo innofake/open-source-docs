@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "serve": "http-server .",
-    "repos": "node update-repos-list.js"
+    "repos": "node update-repos-list.js",
+    "docs": "npm run repos && npm run serve"
   },
   "keywords": [],
   "author": "",
