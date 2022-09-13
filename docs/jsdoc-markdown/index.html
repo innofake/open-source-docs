@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>@innofake/jsdoc-markdown</title>
+    <link type="text/css" rel="stylesheet" href="assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><h1 id="innofakejsdoc-markdown"><a class="header-link" href="#innofakejsdoc-markdown"></a>@innofake/jsdoc-markdown</h1>
+<p>JSDoc Markdown is a tool that allows generating of markdown documentation based on jsdoc comments.</p>
+<h2 id="install"><a class="header-link" href="#install"></a>Install</h2>
+<pre class="hljs"><code>npm i -D @innofake/jsdoc-markdown</code></pre><h2 id="usage"><a class="header-link" href="#usage"></a>Usage</h2>
+<pre class="hljs"><code>jsdoc-markdown</code></pre><h2 id="options"><a class="header-link" href="#options"></a>Options</h2>
+<table>
+<thead>
+<tr>
+<th>Command/option</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>--config</td>
+<td>string</td>
+<td>Path to custom config location</td>
+<td><code>--config &quot;../.jsdoc-markdown.config.json&quot;</code></td>
+</tr>
+<tr>
+<td>--dump</td>
+<td>boolean</td>
+<td>Output config instead of generating markdown</td>
+<td><code>--dump</code></td>
+</tr>
+<tr>
+<td>--dumpStdOut</td>
+<td>boolean</td>
+<td>Output dumped config to stdout instead of config file specified with --config</td>
+<td><code>--dumpStdOut</code></td>
+</tr>
+<tr>
+<td>--customElements</td>
+<td>string</td>
+<td>Path to custom-elements.json</td>
+<td><code>--customElements &quot;../custom-elements.json&quot;</code></td>
+</tr>
+<tr>
+<td>--dir</td>
+<td>string</td>
+<td>Path to directory with js file(s) with jsdoc comments</td>
+<td><code>--dir &quot;../dist&quot;</code></td>
+</tr>
+<tr>
+<td>--srcDir</td>
+<td>string</td>
+<td>Path to directory with source files for custom elements generation</td>
+<td><code>--srcDir &quot;../src&quot;</code></td>
+</tr>
+<tr>
+<td>--outFile</td>
+<td>string</td>
+<td>File name for generated markdown</td>
+<td><code>--outFile &quot;README.md&quot;</code></td>
+</tr>
+<tr>
+<td>--keepImports</td>
+<td>boolean</td>
+<td>Keep imports as relative paths in docs, by default imports are overwritten to be from importRoot</td>
+<td><code>--keepImports</code></td>
+</tr>
+<tr>
+<td>--importRoot</td>
+<td>string</td>
+<td>Import root path to be used by docs instead of relative paths</td>
+<td><code>--importRoot &quot;@org/package-name&quot;</code></td>
+</tr>
+<tr>
+<td>--excludePaths</td>
+<td>string</td>
+<td>Paths to ignore when generating from jsdoc. Comma delimited list</td>
+<td><code>--excludePaths &quot;stories,story,internal&quot;</code></td>
+</tr>
+<tr>
+<td>--excludeKinds</td>
+<td>string</td>
+<td>Custom element module kinds to ignore when generating from jsdoc. Comma delimited list</td>
+<td><code>--excludeKinds &quot;custom-element-definition&quot;</code></td>
+</tr>
+<tr>
+<td>--analyzeFlags</td>
+<td>string</td>
+<td>Custom element analyzer additional flags. Comma delimited list</td>
+<td><code>--analyzeFlags &quot;litelement&quot;</code></td>
+</tr>
+</tbody></table>
+<h2 id="config"><a class="header-link" href="#config"></a>Config</h2>
+<p>Instead of command line options, a json file can be used to configure the parameters. This can be specified using <code>--config filename.json</code> or by default will look for a <code>.jsdoc-markdown.config.json</code> file in the root. This can be generated with defaults using </p>
+<pre class="hljs"><code>jsdoc-markdown --dump</code></pre><p>The default config is as follows</p>
+<pre class="hljs"><code>{
+  <span class="hljs-attr">&quot;customElements&quot;</span>: <span class="hljs-string">&quot;custom-elements.json&quot;</span>,
+  <span class="hljs-attr">&quot;dir&quot;</span>: <span class="hljs-string">&quot;dist&quot;</span>,
+  <span class="hljs-attr">&quot;srcDir&quot;</span>: <span class="hljs-string">&quot;src&quot;</span>,
+  <span class="hljs-attr">&quot;outFile&quot;</span>: <span class="hljs-string">&quot;README.md&quot;</span>,
+  <span class="hljs-attr">&quot;keepImports&quot;</span>: <span class="hljs-literal">false</span>,
+  <span class="hljs-attr">&quot;excludePaths&quot;</span>: [
+    <span class="hljs-string">&quot;stories&quot;</span>,
+    <span class="hljs-string">&quot;story&quot;</span>,
+    <span class="hljs-string">&quot;internal&quot;</span>,
+    <span class="hljs-string">&quot;test&quot;</span>
+  ],
+  <span class="hljs-attr">&quot;excludeKinds&quot;</span>: [
+    <span class="hljs-string">&quot;custom-element-definition&quot;</span>
+  ],
+  <span class="hljs-attr">&quot;analyzeFlags&quot;</span>: [
+    <span class="hljs-string">&quot;--litelement&quot;</span>
+  ]
+}</code></pre>    </article>
+  </body>
+</html>
