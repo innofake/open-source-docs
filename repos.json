@@ -1,44 +1,6 @@
 {
   "repos": [
     {
-      "links": [
-        {
-          "name": "NPM",
-          "icon": "https://avatars.githubusercontent.com/u/6078720",
-          "url": "https://www.npmjs.com/org/capitec"
-        },
-        {
-          "name": "NPM",
-          "icon": "https://avatars.githubusercontent.com/u/6178720",
-          "url": "https://www.npmjs.com/org/capitec"
-        },
-        {
-          "name": "NPM",
-          "icon": "https://avatars.githubusercontent.com/u/6078720",
-          "url": "https://www.npmjs.com/org/capitec"
-        },
-        {
-          "name": "NPM",
-          "icon": "https://avatars.githubusercontent.com/u/6078720",
-          "url": "https://www.npmjs.com/org/capitec"
-        },
-        {
-          "name": "NPM",
-          "icon": "https://avatars.githubusercontent.com/u/6078720",
-          "url": "https://www.npmjs.com/org/capitec"
-        }
-      ],
-      "name": "another-repo"
-    },
-    {
-      "name": "extra-repo",
-      "versions": [
-        "Custom Version Name 06",
-        "non-standard-02-versioning",
-        "strange-versioning-01"
-      ]
-    },
-    {
       "display": "JS Utilities",
       "repo": "https://github.com/innofake/js-utilities",
       "links": [
@@ -76,12 +38,6 @@
       "versions": [
         "beta"
       ]
-    },
-    {
-      "display": "Other Repo",
-      "repo": "https://github.com/capitec/other-repo",
-      "name": "other-repo",
-      "versions": []
     }
   ]
 }
