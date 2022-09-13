@@ -72,7 +72,7 @@ async function load(pushState = true, loadUrl = undefined) {
     }
     clearElements();
 
-    function displayFor(repo, versions, displayVersion, pushState) {
+    function displayFor(repo, versions, displayVersion, pushState, display) {
         welcome.parentElement.removeChild(welcome);
 
         if (select && selectChange) {
@@ -82,8 +82,8 @@ async function load(pushState = true, loadUrl = undefined) {
         var url = new URL(window.location.href);
         url.searchParams.set(`repo`, repo);
 
-        headerLabel.textContent = `${prefix} ${repo}`
-        window.document.title = `${prefix} ${repo}`
+        headerLabel.textContent = `${prefix} ${display || repo}`
+        window.document.title = `${prefix} ${display || repo}`
 
         var tree = document.createDocumentFragment();
 
@@ -166,7 +166,7 @@ async function load(pushState = true, loadUrl = undefined) {
                 const newDisplayVersion = evt.target.value;
                 if (newDisplayVersion !== displayVersion && (displayVersion || newDisplayVersion !== `latest`)) {
                     clearElements();
-                    displayFor(repo, versions, newDisplayVersion, true);
+                    displayFor(repo, versions, newDisplayVersion, true, display);
                 }
             }
             select.addEventListener(`change`, selectChange);
@@ -200,7 +200,7 @@ async function load(pushState = true, loadUrl = undefined) {
             }
             clearElements();
 
-            displayFor(repo, versions, version, pushState);
+            displayFor(repo, versions, version, pushState, definition.display);
             return;
         }
     }
@@ -253,7 +253,7 @@ async function load(pushState = true, loadUrl = undefined) {
             let versions = item.versions || [];
             clearElements();
 
-            displayFor(path, versions, undefined, true);
+            displayFor(path, versions, undefined, true, docsDefinition.display);
         });
 
         div.appendChild(button);
