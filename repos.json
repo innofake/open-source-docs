@@ -1,6 +1,21 @@
 {
   "repos": [
     {
+      "display": "Omni Components",
+      "repo": "https://github.com/capitec/omni-components",
+      "links": [
+        {
+          "name": "NPM",
+          "icon": "https://avatars.githubusercontent.com/u/6078720",
+          "url": "https://www.npmjs.com/org/capitec"
+        }
+      ],
+      "name": "Omni-Components",
+      "versions": [
+        "beta"
+      ]
+    },
+    {
       "links": [
         {
           "name": "NPM",
@@ -39,26 +54,9 @@
       ]
     },
     {
-      "display": "Omni Components",
-      "repo": "https://github.com/capitec/omni-components",
-      "links": [
-        {
-          "name": "NPM",
-          "icon": "https://avatars.githubusercontent.com/u/6078720",
-          "url": "https://www.npmjs.com/org/capitec"
-        }
-      ],
-      "name": "Omni-Components",
-      "versions": [
-        "beta"
-      ]
-    },
-    {
       "display": "Other Repo",
       "repo": "https://github.com/capitec/other-repo",
-      "name": "other-repo",
-      "versions": []
+      "name": "other-repo"
     }
   ]
-  
 }
