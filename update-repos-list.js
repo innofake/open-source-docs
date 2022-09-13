@@ -15,6 +15,15 @@ docsDirs.forEach(dir => {
         let versions = fs.readdirSync(versionsPath);
         repo.versions = versions;
     }
+    const ossDocsDefinition = `docs/${dir}/.oss-docs.json`;
+    if (fs.existsSync(ossDocsDefinition)) {
+        const docsFile = fs.readFileSync(ossDocsDefinition);
+        const docsDef = JSON.parse(docsFile);
+        repo = {
+            ...docsDef,
+            ...repo
+        }
+    }
     reposList.repos.push(repo);
 });
 

@@ -13,11 +13,9 @@ window.addEventListener(`popstate`, evt => {
     if (evt.state && evt.state.url) {
         load(false, evt.state.url);
     } else {
-        // window.location.reload();
         load(false, window.location.href);
     }
 });
-// history.replaceState({ url: window.location.href }, ``, window.location.href);
 
 let intervalId = undefined;
 let iframe = undefined;
@@ -27,6 +25,7 @@ var header = document.getElementById("header");
 var headerLabel = document.getElementById("header-label");
 var select = document.getElementById("version-select");
 var fullscreen = document.getElementById("btn-fullscreen");
+var welcome = document.getElementById("welcome");
 
 var url = new URL(window.location.href);
 var newUrl = url.href.replace(url.search, ``);
@@ -74,6 +73,8 @@ async function load(pushState = true, loadUrl = undefined) {
     clearElements();
 
     function displayFor(repo, versions, displayVersion, pushState) {
+        welcome.parentElement.removeChild(welcome);
+
         if (select && selectChange) {
             select.removeEventListener(`change`, selectChange);
             selectChange = undefined;
@@ -174,7 +175,6 @@ async function load(pushState = true, loadUrl = undefined) {
                 select.options[versions.indexOf(displayVersion) + 1].selected = true;
             }
 
-            // header.appendChild(select);
         } else {
             select.setAttribute(`class`, `hidden`);
         }
@@ -214,8 +214,26 @@ async function load(pushState = true, loadUrl = undefined) {
     barDiv.setAttribute("id", `container-buttons`);
     barDiv.setAttribute("class", "btn-bar");
 
-    structure.repos.forEach(item => {
+    structure.repos.forEach(async item => {
         const path = item.name;
+        let docsDefinition = item;
+
+        // try {
+        //     let response = await fetch(`${baseRef}/docs/${path}/.oss-docs.json`, requestInit);
+        //     docsDefinition = await response.text();
+        //     if (docsDefinition) {
+        //         docsDefinition = JSON.parse(docsDefinition);
+        //         console.log(docsDefinition);
+        //     } else {
+        //         docsDefinition = {
+        //             name: path
+        //         };
+        //     }
+        // } catch (error) {
+        //     docsDefinition = {
+        //         name: path
+        //     };
+        // }
 
         var tree = document.createDocumentFragment();
 
@@ -223,9 +241,14 @@ async function load(pushState = true, loadUrl = undefined) {
         div.setAttribute("id", `container-${path}`);
         div.setAttribute("class", "btn-container");
 
+        var centering = document.createElement("div");
+        centering.classList.add('links');
+        div.appendChild(centering);
+
         var button = document.createElement("button");
         button.setAttribute("id", `btn-${path}`);
-        button.appendChild(document.createTextNode(path));
+        button.appendChild(document.createTextNode(docsDefinition.display || docsDefinition.name));
+        button.classList.add('tile', 'center');
         button.addEventListener("click", async (e) => {
             let versions = item.versions || [];
             clearElements();
@@ -235,6 +258,51 @@ async function load(pushState = true, loadUrl = undefined) {
 
         div.appendChild(button);
 
+        var linkList = document.createElement("div");
+        linkList.classList.add('links');
+
+        if (docsDefinition.repo) {           
+
+            var gitLink = document.createElement("a");
+            gitLink.setAttribute("id", `lnk-${path}`);
+            var img = document.createElement("img");
+            img.style.maxWidth = "32px";
+            img.style.maxHeight = "32px";
+            img.src = "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png";
+            img.alt = "Github";
+            img.title = "Github Repository";
+            gitLink.appendChild(img);
+            gitLink.classList.add('icon','center');
+            gitLink.href = docsDefinition.repo;
+
+            linkList.appendChild(gitLink);
+        }
+
+        if (docsDefinition.links) {
+            docsDefinition.links.forEach(linkDef => {         
+
+                var link = document.createElement("a");
+                link.setAttribute("id", `lnk-${path}-${linkDef.name}`);
+                if (linkDef.icon) {
+                    var img = document.createElement("img");
+                    img.style.maxWidth = "32px";
+                    img.style.maxHeight = "32px";
+                    img.src = linkDef.icon;
+                    img.alt = linkDef.name;
+                    img.title = linkDef.name;
+                    link.appendChild(img);
+                } else {
+                    link.appendChild(document.createTextNode(linkDef.name));
+                }
+                link.classList.add('icon','center');
+                link.href = linkDef.url;
+    
+                linkList.appendChild(link);
+            });
+        }
+        
+        div.appendChild(linkList);
+
         tree.appendChild(div);
 
         barDiv.appendChild(tree);
@@ -243,10 +311,6 @@ async function load(pushState = true, loadUrl = undefined) {
     barTree.appendChild(barDiv);
 
     main.appendChild(barTree);
-    // })
-    // .catch(err => { 
-    //     console.error(err);
-    // });
 }
 
 load(true);
