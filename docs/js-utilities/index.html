@@ -1,0 +1,215 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>Global Functions</title>
+    <link type="text/css" rel="stylesheet" href="assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><h2 id="global-functions"><a class="header-link" href="#global-functions"></a>Global Functions</h2>
+<table><thead><tr><th>Name</th><th>Description</th><th>Parameters</th><th>Return</th><th>Example</th></tr></thead><tbody>
+<tr><td>
+
+<p><code>getValue</code></p>
+</td><td>Retrieves the value from the object in a nested fashion. Specify a path as e.g. "food.fruit.apple". Click [here](https://hackernoon.com/accessing-nested-objects-in-javascript-f02f1bd6387f) for more info.</td><td>
+
+<p>obj {<code>Object</code>} - Object to retrieve value from.</p>
+<p> path {<code>String</code>} - Path to nested value, e.g. &quot;food.fruit.apple&quot;.</p>
+<p> separator {<code>String</code>} - Separator to the path split on.</p>
+</td><td>
+
+<p>{<code>*</code>} - Value of the resolved path.</p>
+</td><td>
+
+
+<pre class="hljs"><code>
+    <span class="hljs-keyword">import</span> { getValue } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@innofake/js-utilities&#x27;</span>;
+    </code></pre></td></tr>
+<tr><td>
+
+<p><code>setValue</code></p>
+</td><td>Assigns the value to the object in a nested fashion.
+Specify a path as e.g. "food.fruit.apple".</td><td>
+
+<p>obj {<code>Object</code>} - Object to set value on.</p>
+<p> path {<code>String</code>} - Path to nested value, e.g. &quot;food.fruit.apple&quot;.</p>
+<p> value {<code>*</code>} - Value to set for the path.</p>
+<p> separator {<code>String</code>} - Separator to the path split on.</p>
+</td><td>
+
+<p>{<code>void</code>} - </p>
+</td><td>
+
+
+<pre class="hljs"><code>
+    <span class="hljs-keyword">import</span> { setValue } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@innofake/js-utilities&#x27;</span>;
+    </code></pre></td></tr>
+<tr><td>
+
+<p><code>hasValue</code></p>
+</td><td>Check if the current value is non-null or non-undefined</td><td>
+
+<p>value {<code>Number</code>|<code>String</code>|<code>Object</code>} - Value to check</p>
+</td><td>
+
+<p>{<code>Boolean</code>} - - Boolean for if the value is non-null or non-undefined</p>
+</td><td>
+
+
+<pre class="hljs"><code>
+    <span class="hljs-keyword">import</span> { hasValue } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@innofake/js-utilities&#x27;</span>;
+    </code></pre></td></tr>
+<tr><td>
+
+<p><code>groupBy</code></p>
+</td><td>Group by method for an array.</td><td>
+
+<p>arr {<code>Array</code>} - Array to group.</p>
+<h2 id="target-stringfunction---grouping-target"><a class="header-link" href="#target-stringfunction---grouping-target"></a> target {<code>String</code>|<code>function</code>} - Grouping target:</h2>
+<pre class="hljs"><code>``` <span class="hljs-keyword">as</span> property <span class="hljs-keyword">to</span> <span class="hljs-keyword">group</span> <span class="hljs-keyword">on</span>, e.g. &quot;userId&quot;
+ - 
+```<span class="hljs-keyword">Function</span>
+``` <span class="hljs-keyword">as</span> [<span class="hljs-keyword">Array</span>.prototype.reduce()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/<span class="hljs-keyword">Array</span>/reduce#Syntax) callback <span class="hljs-keyword">function</span>.
+
+&lt;/td&gt;&lt;td&gt;
+
+{`<span class="hljs-keyword">Object</span>`} - Contains a property <span class="hljs-keyword">as</span> key <span class="hljs-keyword">for</span> <span class="hljs-keyword">each</span> <span class="hljs-keyword">group</span>.
+
+&lt;/td&gt;&lt;td&gt;
+
+
+```js
+
+    <span class="hljs-keyword">import</span> { groupBy } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@innofake/js-utilities&#x27;</span>;
+    </code></pre></td></tr>
+<tr><td>
+
+<p><code>isFunction</code></p>
+</td><td>Determines if the given value is a [function](https://developer.mozilla.org/en-US/docs/Glossary/Function).</td><td>
+
+<p>value {<code>*</code>} - Value to inspect.</p>
+</td><td>
+
+<p>{<code>Boolean</code>} - True if the value is a valid function.</p>
+</td><td>
+
+
+<pre class="hljs"><code>
+    <span class="hljs-keyword">import</span> { isFunction } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@innofake/js-utilities&#x27;</span>;
+    </code></pre></td></tr>
+<tr><td>
+
+<p><code>isObject</code></p>
+</td><td>Determines if a given value is an Object.</td><td>
+
+<p>value {<code>*</code>} - Value to inspect.</p>
+</td><td>
+
+<p>{<code>Boolean</code>} - True if the value is an object.</p>
+</td><td>
+
+
+<pre class="hljs"><code>
+    <span class="hljs-keyword">import</span> { isObject } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@innofake/js-utilities&#x27;</span>;
+    </code></pre></td></tr>
+<tr><td>
+
+<p><code>isEmptyObject</code></p>
+</td><td></td><td>
+
+<p>obj {<code>*</code>} - Value to inspect</p>
+</td><td>
+
+<p>{<code>Boolean</code>} - True if the value is an empty.</p>
+</td><td>
+
+
+<pre class="hljs"><code>
+    <span class="hljs-keyword">import</span> { isEmptyObject } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@innofake/js-utilities&#x27;</span>;
+    </code></pre></td></tr>
+<tr><td>
+
+<p><code>isString</code></p>
+</td><td></td><td>
+
+<p>s {<code>*</code>} - Value to inspect</p>
+</td><td>
+
+<p>{<code>Boolean</code>} - True if the value is a string.</p>
+</td><td>
+
+
+<pre class="hljs"><code>
+    <span class="hljs-keyword">import</span> { isString } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@innofake/js-utilities&#x27;</span>;
+    </code></pre></td></tr>
+<tr><td>
+
+<p><code>isPromise</code></p>
+</td><td>Determines if a given value is a Promise.</td><td>
+
+<p>value {<code>*</code>} - Value to inspect.</p>
+</td><td>
+
+<p>{<code>Boolean</code>} - True if the value is a Promise.</p>
+</td><td>
+
+
+<pre class="hljs"><code>
+    <span class="hljs-keyword">import</span> { isPromise } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@innofake/js-utilities&#x27;</span>;
+    </code></pre></td></tr>
+<tr><td>
+
+<p><code>formatBytes</code></p>
+</td><td>Returns a formatted string with easier to read values for file sizes</td><td>
+
+<p>bytes {<code>Number</code>} - Size passed in.</p>
+<p> decimals {<code>Number</code>} - Number of decimals to return. Default to 2</p>
+</td><td>
+
+<p>{<code>String</code>} - The value with size formatted</p>
+</td><td>
+
+
+<pre class="hljs"><code>
+    <span class="hljs-keyword">import</span> { formatBytes } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@innofake/js-utilities&#x27;</span>;
+    </code></pre></td></tr>
+<tr><td>
+
+<p><code>deepCopy</code></p>
+</td><td>Creates and returns a deep copy of an Object or Array.</td><td>
+
+<p>inObject {<code>*</code>} - Object or Array to clone.</p>
+</td><td>
+
+<p>{<code>*</code>} - Copied object or Array.</p>
+</td><td>
+
+
+<pre class="hljs"><code>
+    <span class="hljs-keyword">import</span> { deepCopy } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@innofake/js-utilities&#x27;</span>;
+    </code></pre></td></tr>
+<tr><td>
+
+<p><code>isURL</code></p>
+</td><td>Determines if a given string is a Url.</td><td>
+
+<p>str {<code>string</code>} - Item to check</p>
+</td><td>
+
+<p>{<code>Boolean</code>} - True if the parameter is a Url.</p>
+</td><td>
+
+
+<pre class="hljs"><code>
+    <span class="hljs-keyword">import</span> { isURL } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@innofake/js-utilities&#x27;</span>;
+    </code></pre></td></tr>
+</tbody></table>
+
+
+<p class="img-container"><img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png" alt="-----------------------------------------------------"></p>
+    </article>
+  </body>
+</html>

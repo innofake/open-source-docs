@@ -1,0 +1,11 @@
+{
+    "display": "JS Utilities",
+    "repo": "https://github.com/innofake/js-utilities",
+    "links": [
+        {
+            "name": "NPM",
+            "icon": "https://avatars.githubusercontent.com/u/6078720",
+            "url": "https://www.npmjs.com/package/@innofake/js-utilities"
+        }
+    ]
+}
